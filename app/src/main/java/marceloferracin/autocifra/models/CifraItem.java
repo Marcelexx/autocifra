@@ -5,7 +5,7 @@ package marceloferracin.autocifra.models;
  * Created by Marcelo Ferracin on 23/11/2015.
  */
 
-public class Cifra {
+public class CifraItem {
     private String music;
     private String artist;
 

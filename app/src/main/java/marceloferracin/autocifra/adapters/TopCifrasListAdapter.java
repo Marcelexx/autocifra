@@ -11,35 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.models.Cifra;
+import marceloferracin.autocifra.models.CifraItem;
 
 /**
  *
  * Created by Marcelo Ferracin on 22/11/2015.
  */
 
-public class TopMusicAdapter extends ArrayAdapter<Cifra> {
-    private List<Cifra> mCifraList;
+public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> {
+    private List<CifraItem> mCifraItemList;
     private Activity mActivity;
 
-    public TopMusicAdapter(Activity activity, int textViewResourceId, List<Cifra> cifraList) {
-        super(activity, textViewResourceId, cifraList);
+    public TopCifrasListAdapter(Activity activity, int textViewResourceId, List<CifraItem> cifraItemList) {
+        super(activity, textViewResourceId, cifraItemList);
 
-        mCifraList = new ArrayList<>();
+        mCifraItemList = new ArrayList<>();
         mActivity = activity;
 
-        for (int i = 0; i < cifraList.size(); ++i) {
-            mCifraList.add(cifraList.get(i));
+        for (int i = 0; i < cifraItemList.size(); ++i) {
+            mCifraItemList.add(cifraItemList.get(i));
         }
     }
 
     @Override
     public int getCount() {
-        return mCifraList.size();
+        return mCifraItemList.size();
     }
 
     @Override
-    public Cifra getItem(int position) {
+    public CifraItem getItem(int position) {
         return null;
     }
 
@@ -51,17 +51,14 @@ public class TopMusicAdapter extends ArrayAdapter<Cifra> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(
-                    R.layout.music_item_layout, null);
-
-
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_cifras_item, null);
         }
 
         TextView musicTextView = (TextView) convertView.findViewById(R.id.musicTextView);
         TextView artistTextView = (TextView) convertView.findViewById(R.id.artistTextView);
 
-        musicTextView.setText(mCifraList.get(position).getMusic());
-        artistTextView.setText(mCifraList.get(position).getArtist());
+        musicTextView.setText(mCifraItemList.get(position).getMusic());
+        artistTextView.setText(mCifraItemList.get(position).getArtist());
 
         return convertView;
     }

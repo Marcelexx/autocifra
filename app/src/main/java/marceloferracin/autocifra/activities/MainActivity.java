@@ -1,8 +1,8 @@
 package marceloferracin.autocifra.activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.fragments.TopMusicFragment;
+import marceloferracin.autocifra.fragments.CifrasFragment;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
@@ -54,22 +54,11 @@ public class MainActivity extends AppCompatActivity {
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Fragment fragment;
-                FragmentManager fragmentManager = getFragmentManager();
-                switch (position) {
-                    default:
-                    case 0:
-                        fragment = new TopMusicFragment();
-                        break;
-                    case 1:
-                        fragment = new TopMusicFragment();
-                        break;
-                }
-
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                mDrawer.closeDrawers();
+                changeFragment(position);
             }
         });
+
+        changeFragment(0);
 
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar,
@@ -79,5 +68,23 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
+    }
+
+    private void changeFragment(int position) {
+        Fragment fragment;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        switch (position) {
+            default:
+            case 0:
+                fragment = new CifrasFragment();
+                break;
+            case 1:
+                fragment = new CifrasFragment();
+                break;
+        }
+
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        mDrawer.closeDrawers();
     }
 }

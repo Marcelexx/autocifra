@@ -10,5 +10,6 @@
 
     <!-- Components Colors-->
     <color name="drawerListColor">#424242</color>
-
+    <color name="tabsScrollColor">#FF7043</color>
+    <color name="tabUnselectedColor">#D3D3D3</color>
 </resources>

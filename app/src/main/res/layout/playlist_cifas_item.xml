@@ -5,23 +5,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/musicTextView"
+        android:id="@+id/playlistNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
-        android:text="Music"
         android:textSize="17sp" />
 
     <TextView
-        android:id="@+id/artistTextView"
+        android:id="@+id/contributorNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
-        android:text="Artist"
         android:textSize="15sp" />
 
 </LinearLayout>
