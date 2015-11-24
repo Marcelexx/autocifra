@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">AutoCifra</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <!-- Drawer Strings-->
+    <string name="navigation_drawer_open">Abrir Menu</string>
+    <string name="navigation_drawer_close">Fechar Menu</string>
+
+    <!-- Menu Strings-->
+    <string name="search_menu">Pesquisar</string>
+    <string name="help_menu">Ajuda</string>
 </resources>

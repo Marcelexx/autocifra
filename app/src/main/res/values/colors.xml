@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="projectMainColor">#8BC34A</color>
-    <color name="projectMainColorDark">#33691E</color>
+    <!-- Main Colors-->
+    <color name="projectMainColor">#FF7043</color>
+    <color name="projectMainColorDark">#F4511E</color>
+
+    <!-- General Colors-->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Components Colors-->
+    <color name="drawerListColor">#424242</color>
+
 </resources>

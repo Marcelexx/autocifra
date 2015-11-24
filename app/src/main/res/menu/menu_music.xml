@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.TopMusicActivity">
+    tools:context=".fragments.TopMusicFragment">
     <item
         android:id="@+id/top_music_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/help_menu"
         app:showAsAction="never" />
 
     <item
@@ -13,5 +13,5 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="Search"/>
+        android:title="@string/search_menu"/>
 </menu>

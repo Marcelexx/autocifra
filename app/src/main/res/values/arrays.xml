@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="cifraOptionsArray">
+        <item>Músicas</item>
+        <item>Playlists</item>
+        <item>Ranking</item>
+        <item>Mostre seu Talento</item>
+        <item>Sobre</item>
+    </array>
+</resources>
