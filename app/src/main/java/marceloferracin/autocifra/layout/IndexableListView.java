@@ -96,10 +96,7 @@ public class IndexableListView extends ListView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (mScroller.contains(ev.getX(), ev.getY()))
-            return true;
-
-        return super.onInterceptTouchEvent(ev);
+        return mScroller.contains(ev.getX(), ev.getY()) || super.onInterceptTouchEvent(ev);
     }
 
     @Override
@@ -113,7 +110,7 @@ public class IndexableListView extends ListView {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if (mScroller != null)
-            mScroller.onSizeChanged(w, h, oldw, oldh);
+            mScroller.onSizeChanged(w, h);
     }
 
 }

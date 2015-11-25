@@ -16,8 +16,8 @@ public class CifrasViewPagerAdapter extends FragmentStatePagerAdapter {
     private CharSequence mTitles[];
     private int mNumOfTabs;
 
-    public CifrasViewPagerAdapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
-        super(fm);
+    public CifrasViewPagerAdapter(FragmentManager fragmentManager, CharSequence titles[], int numOfTabs) {
+        super(fragmentManager);
 
         mTitles = titles;
         mNumOfTabs = numOfTabs;

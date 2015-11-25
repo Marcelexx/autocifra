@@ -36,7 +36,6 @@ public class PlaylistCifrasFragment extends Fragment {
         //TODO Ler do servidor
         List<PlaylistItem> playlistItemList = setPartialPlaylists();
 
-        //TODO Trocar layout do item
         final PlaylistCifrasListAdapter adapter = new PlaylistCifrasListAdapter(getActivity(), R.layout.playlist_cifas_item, playlistItemList);
         playlistCypherListView.setAdapter(adapter);
     }

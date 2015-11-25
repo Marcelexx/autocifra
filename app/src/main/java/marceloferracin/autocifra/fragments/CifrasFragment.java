@@ -38,7 +38,7 @@ public class CifrasFragment extends Fragment {
         cifrasViewPager.setAdapter(cifrasViewPagerAdapter);
 
         SlidingTabLayout cifrasSlidingTabs = (SlidingTabLayout) v.findViewById(R.id.cifrasSlidingTabs);
-        cifrasSlidingTabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+        cifrasSlidingTabs.setDistributeEvenly(true);
 
         cifrasSlidingTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override

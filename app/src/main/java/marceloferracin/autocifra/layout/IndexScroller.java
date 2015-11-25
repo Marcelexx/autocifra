@@ -153,7 +153,7 @@ public class IndexScroller {
         return false;
     }
 
-    public void onSizeChanged(int w, int h, int oldw, int oldh) {
+    public void onSizeChanged(int w, int h) {
         mListViewWidth = w;
         mListViewHeight = h;
         mIndexbarRect = new RectF(w - mIndexbarMargin - mIndexbarWidth

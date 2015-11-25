@@ -66,6 +66,7 @@ public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> implements Sec
         return convertView;
     }
 
+    //TODO Trocar desta aba para a de Artistas
     @Override
     public int getPositionForSection(int section) {
         for (int i = section; i >= 0; i--) {

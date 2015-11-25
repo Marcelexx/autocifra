@@ -51,7 +51,6 @@ public class PlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            //TODO Trocar layout de item
             convertView = LayoutInflater.from(mActivity).inflate(R.layout.playlist_cifas_item, null);
         }
 
