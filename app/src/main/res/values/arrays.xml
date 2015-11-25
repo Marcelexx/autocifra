@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="cifraOptionsArray">
+    <array name="autoCifraOptionsArray">
         <item>Cifras</item>
         <item>Playlists</item>
         <item>Ranking</item>
         <item>Mostre seu Talento</item>
         <item>Sobre</item>
+    </array>
+
+    <array name="cifrasOptions">
+        <item>Top 20</item>
+        <item>Artistas</item>
+        <item>Playlists</item>
+        <item>Gênero</item>
+        <item>Data</item>
     </array>
 </resources>

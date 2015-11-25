@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
+    <marceloferracin.autocifra.layout.IndexableListView
         android:id="@+id/topMusicCypherListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

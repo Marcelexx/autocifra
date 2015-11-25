@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -12,15 +13,17 @@ import java.util.List;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.models.CifraItem;
+import marceloferracin.autocifra.utils.StringMatcher;
 
 /**
  *
  * Created by Marcelo Ferracin on 22/11/2015.
  */
 
-public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> {
+public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> implements SectionIndexer {
     private List<CifraItem> mCifraItemList;
     private Activity mActivity;
+    private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public TopCifrasListAdapter(Activity activity, int textViewResourceId, List<CifraItem> cifraItemList) {
         super(activity, textViewResourceId, cifraItemList);
@@ -40,7 +43,7 @@ public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> {
 
     @Override
     public CifraItem getItem(int position) {
-        return null;
+        return mCifraItemList.get(position);
     }
 
     @Override
@@ -61,5 +64,39 @@ public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> {
         artistTextView.setText(mCifraItemList.get(position).getArtist());
 
         return convertView;
+    }
+
+    @Override
+    public int getPositionForSection(int section) {
+        for (int i = section; i >= 0; i--) {
+            for (int j = 0; j < getCount(); j++) {
+                if (i == 0) {
+                    for (int k = 0; k <= 9; k++) {
+                        if (StringMatcher.match(String.valueOf(getItem(j).getMusic().charAt(0)), String.valueOf(k))) {
+                            return j;
+                        }
+                    }
+                } else {
+                    if (StringMatcher.match(String.valueOf(getItem(j).getMusic().charAt(0)), String.valueOf(mSections.charAt(i)))) {
+                        return j;
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
+    }
+
+    @Override
+    public Object[] getSections() {
+        String[] sections = new String[mSections.length()];
+        for (int i = 0; i < mSections.length(); i++)
+            sections[i] = String.valueOf(mSections.charAt(i));
+        return sections;
     }
 }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initComponents() {
         mDrawer = (DrawerLayout) findViewById(R.id.cifra_options_drawer);
-        String[] cifraOptions = getResources().getStringArray(R.array.cifraOptionsArray);
+        String[] cifraOptions = getResources().getStringArray(R.array.autoCifraOptionsArray);
         ListView drawerList = (ListView) findViewById(R.id.cifra_options_drawer_list);
 
         drawerList.setAdapter(new ArrayAdapter<>(this,

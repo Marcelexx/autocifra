@@ -30,8 +30,8 @@ public class CifrasFragment extends Fragment {
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.main_toolbar_title);
         toolbarTitle.setText(getString(R.string.cifras_title));
 
-        CharSequence titles[] = {"Top 20", "Playlists"};
-        int numOfTabs = 2;
+        CharSequence titles[] = getResources().getStringArray(R.array.cifrasOptions);
+        int numOfTabs = 5;
         CifrasViewPagerAdapter cifrasViewPagerAdapter = new CifrasViewPagerAdapter(getFragmentManager(), titles, numOfTabs);
 
         ViewPager cifrasViewPager = (ViewPager) v.findViewById(R.id.cifrasViewPager);
