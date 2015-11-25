@@ -1,11 +1,11 @@
-package marceloferracin.autocifra.adapters;
+package marceloferracin.autocifra.adapters.cifras;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import marceloferracin.autocifra.fragments.PlaylistCifrasFragment;
-import marceloferracin.autocifra.fragments.TopCifrasFragment;
+import marceloferracin.autocifra.fragments.cifrassubfragments.PlaylistCifrasFragment;
+import marceloferracin.autocifra.fragments.cifrassubfragments.TopCifrasFragment;
 
 /**
  *

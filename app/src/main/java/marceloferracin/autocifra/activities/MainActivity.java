@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.fragments.CifrasFragment;
+import marceloferracin.autocifra.fragments.PlaylistsFragment;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new CifrasFragment();
                 break;
             case 1:
-                fragment = new CifrasFragment();
+                fragment = new PlaylistsFragment();
                 break;
         }
 

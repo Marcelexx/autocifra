@@ -1,4 +1,4 @@
-package marceloferracin.autocifra.adapters;
+package marceloferracin.autocifra.adapters.cifras;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -51,7 +51,7 @@ public class PlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.playlist_cifas_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.playlist_cifras_item, null);
         }
 
         TextView playlistNameTextView = (TextView) convertView.findViewById(R.id.playlistNameTextView);

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.adapters.CifrasViewPagerAdapter;
+import marceloferracin.autocifra.adapters.cifras.CifrasViewPagerAdapter;
 import marceloferracin.autocifra.layout.SlidingTabLayout;
 
 

@@ -1,4 +1,4 @@
-package marceloferracin.autocifra.fragments;
+package marceloferracin.autocifra.fragments.cifrassubfragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.adapters.PlaylistCifrasListAdapter;
+import marceloferracin.autocifra.adapters.cifras.PlaylistCifrasListAdapter;
 import marceloferracin.autocifra.models.PlaylistItem;
 
 /**
@@ -36,7 +36,7 @@ public class PlaylistCifrasFragment extends Fragment {
         //TODO Ler do servidor
         List<PlaylistItem> playlistItemList = setPartialPlaylists();
 
-        final PlaylistCifrasListAdapter adapter = new PlaylistCifrasListAdapter(getActivity(), R.layout.playlist_cifas_item, playlistItemList);
+        final PlaylistCifrasListAdapter adapter = new PlaylistCifrasListAdapter(getActivity(), R.layout.playlist_cifras_item, playlistItemList);
         playlistCypherListView.setAdapter(adapter);
     }
 

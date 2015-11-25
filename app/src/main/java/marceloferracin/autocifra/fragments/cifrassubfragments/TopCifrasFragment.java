@@ -1,4 +1,4 @@
-package marceloferracin.autocifra.fragments;
+package marceloferracin.autocifra.fragments.cifrassubfragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.adapters.TopCifrasListAdapter;
+import marceloferracin.autocifra.adapters.cifras.TopCifrasListAdapter;
 import marceloferracin.autocifra.models.CifraItem;
 
 /**
@@ -35,8 +35,6 @@ public class TopCifrasFragment extends Fragment {
 
         //TODO Ler do servidor
         List<CifraItem> cifraItemList = setPartialCifras();
-
-        topMusicCypherListView.setFastScrollEnabled(true);
 
         final TopCifrasListAdapter adapter = new TopCifrasListAdapter(getActivity(), R.layout.top_cifras_item, cifraItemList);
         topMusicCypherListView.setAdapter(adapter);
