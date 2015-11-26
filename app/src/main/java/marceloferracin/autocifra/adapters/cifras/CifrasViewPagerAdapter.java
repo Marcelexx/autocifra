@@ -4,7 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import marceloferracin.autocifra.fragments.cifrassubfragments.PlaylistCifrasFragment;
+import marceloferracin.autocifra.fragments.cifrassubfragments.TopArtistCifrasFragment;
+import marceloferracin.autocifra.fragments.cifrassubfragments.TopPlaylistCifrasFragment;
 import marceloferracin.autocifra.fragments.cifrassubfragments.TopCifrasFragment;
 
 /**
@@ -25,10 +26,15 @@ public class CifrasViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new TopCifrasFragment();
-        } else {
-            return new PlaylistCifrasFragment();
+        switch (position) {
+            case 0:
+                return new TopCifrasFragment();
+            case 1:
+                return new TopArtistCifrasFragment();
+            case 2:
+                return new TopPlaylistCifrasFragment();
+            default:
+                return new TopCifrasFragment();
         }
     }
 

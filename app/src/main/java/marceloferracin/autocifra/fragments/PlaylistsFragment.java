@@ -58,7 +58,7 @@ public class PlaylistsFragment extends Fragment {
 
         topMusicCypherListView.setFastScrollEnabled(true);
 
-        final PlaylistListAdapter adapter = new PlaylistListAdapter(getActivity(), R.layout.playlist_cifras_item, playlistItemList);
+        final PlaylistListAdapter adapter = new PlaylistListAdapter(getActivity(), R.layout.top_playlist_cifras_item, playlistItemList);
         topMusicCypherListView.setAdapter(adapter);
     }
 

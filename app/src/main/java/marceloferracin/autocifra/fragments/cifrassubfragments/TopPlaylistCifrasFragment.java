@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.adapters.cifras.PlaylistCifrasListAdapter;
+import marceloferracin.autocifra.adapters.cifras.TopPlaylistCifrasListAdapter;
 import marceloferracin.autocifra.models.PlaylistItem;
 
 /**
@@ -20,10 +20,10 @@ import marceloferracin.autocifra.models.PlaylistItem;
  * Created by Marcelo Ferracin on 24/11/2015.
  */
 
-public class PlaylistCifrasFragment extends Fragment {
+public class TopPlaylistCifrasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_playlist_cifras, container, false);
+        View v = inflater.inflate(R.layout.fragment_top_playlist_cifras, container, false);
 
         initComponents(v);
 
@@ -36,7 +36,7 @@ public class PlaylistCifrasFragment extends Fragment {
         //TODO Ler do servidor
         List<PlaylistItem> playlistItemList = setPartialPlaylists();
 
-        final PlaylistCifrasListAdapter adapter = new PlaylistCifrasListAdapter(getActivity(), R.layout.playlist_cifras_item, playlistItemList);
+        final TopPlaylistCifrasListAdapter adapter = new TopPlaylistCifrasListAdapter(getActivity(), R.layout.top_playlist_cifras_item, playlistItemList);
         playlistCypherListView.setAdapter(adapter);
     }
 

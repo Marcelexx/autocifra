@@ -16,7 +16,6 @@ import marceloferracin.autocifra.models.PlaylistItem;
 import marceloferracin.autocifra.utils.StringMatcher;
 
 /**
- *
  * Created by Marcelo Ferracin on 24/11/2015.
  */
 
@@ -53,20 +52,55 @@ public class PlaylistListAdapter extends ArrayAdapter<PlaylistItem> implements S
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        PlaylistItem playlistItem = mPlaylistItemList.get(position);
+
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_cifras_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.playlist_item, null);
         }
 
-        TextView musicTextView = (TextView) convertView.findViewById(R.id.musicTextView);
-        TextView artistTextView = (TextView) convertView.findViewById(R.id.artistTextView);
+        View letterTitleDividerLine = convertView.findViewById(R.id.letterTitleDividerLine);
+        TextView letterTitleTextView = (TextView) convertView.findViewById(R.id.letterTitleTextView);
+        TextView playlistTextView = (TextView) convertView.findViewById(R.id.playlistNameTextView);
+        TextView contributorTextView = (TextView) convertView.findViewById(R.id.contributorNameTextView);
+        View playlistListViewDivider = convertView.findViewById(R.id.playlistListViewDivider);
 
-        musicTextView.setText(mPlaylistItemList.get(position).getPlaylist());
-        artistTextView.setText(mPlaylistItemList.get(position).getContributor());
+        playlistTextView.setText(playlistItem.getPlaylist());
+        contributorTextView.setText(playlistItem.getContributor());
+
+        String firstCharCurrentItem = Character.toString(playlistItem.getPlaylist().toUpperCase().charAt(0));
+
+        if (position > 0) {
+            String firstCharPreviousItem = Character.toString(mPlaylistItemList.get(position - 1).getPlaylist().toUpperCase().charAt(0));
+
+            if (!firstCharCurrentItem.equals(firstCharPreviousItem)) {
+                letterTitleTextView.setText(firstCharCurrentItem);
+                letterTitleTextView.setVisibility(View.VISIBLE);
+                letterTitleDividerLine.setVisibility(View.VISIBLE);
+            } else {
+                letterTitleTextView.setVisibility(View.GONE);
+                letterTitleDividerLine.setVisibility(View.GONE);
+            }
+        } else {
+            letterTitleTextView.setText(firstCharCurrentItem);
+            letterTitleTextView.setVisibility(View.VISIBLE);
+            letterTitleDividerLine.setVisibility(View.VISIBLE);
+        }
+
+        if (position < mPlaylistItemList.size() - 1) {
+            String firstCharNextItem = Character.toString(mPlaylistItemList.get(position + 1).getPlaylist().toUpperCase().charAt(0));
+
+            if (firstCharCurrentItem.equals(firstCharNextItem)) {
+                playlistListViewDivider.setVisibility(View.VISIBLE);
+            } else {
+                playlistListViewDivider.setVisibility(View.GONE);
+            }
+        } else {
+            playlistListViewDivider.setVisibility(View.GONE);
+        }
 
         return convertView;
     }
 
-    //TODO Trocar desta aba para a de Artistas
     @Override
     public int getPositionForSection(int section) {
         for (int i = section; i >= 0; i--) {

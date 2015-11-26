@@ -8,7 +8,11 @@
     <marceloferracin.autocifra.layout.IndexableListView
         android:id="@+id/playlistsListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" />
 
     <ImageButton
         android:layout_width="70dp"

@@ -18,11 +18,11 @@ import marceloferracin.autocifra.models.PlaylistItem;
  * Created by Marcelo Ferracin on 24/11/2015.
  */
 
-public class PlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
+public class TopPlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
     private List<PlaylistItem> mPlaylistItemList;
     private Activity mActivity;
 
-    public PlaylistCifrasListAdapter(Activity activity, int textViewResourceId, List<PlaylistItem> playlistItemList) {
+    public TopPlaylistCifrasListAdapter(Activity activity, int textViewResourceId, List<PlaylistItem> playlistItemList) {
         super(activity, textViewResourceId, playlistItemList);
 
         mPlaylistItemList = new ArrayList<>();
@@ -51,7 +51,7 @@ public class PlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.playlist_cifras_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_playlist_cifras_item, null);
         }
 
         TextView playlistNameTextView = (TextView) convertView.findViewById(R.id.playlistNameTextView);

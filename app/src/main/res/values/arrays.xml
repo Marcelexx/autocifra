@@ -9,9 +9,9 @@
     </array>
 
     <array name="cifrasOptions">
-        <item>Top 20</item>
-        <item>Artistas</item>
-        <item>Playlists</item>
+        <item>Top Cifras</item>
+        <item>Top Artistas</item>
+        <item>Top Playlists</item>
         <item>Gênero</item>
         <item>Data</item>
     </array>
