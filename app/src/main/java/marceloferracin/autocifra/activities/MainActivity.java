@@ -3,12 +3,10 @@ package marceloferracin.autocifra.activities;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,28 +17,26 @@ import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private DrawerLayout mDrawer;
-    private Toolbar mToolbar;
+    private static DrawerLayout mDrawer;
+    private static Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(mToolbar);
 
         initComponents();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawer.openDrawer(GravityCompat.START);
-                return true;
-        }
+    public static Toolbar getToolbar() {
+        return mToolbar;
+    }
 
-        return super.onOptionsItemSelected(item);
+    public static DrawerLayout getDrawer() {
+        return mDrawer;
     }
 
     private void initComponents() {
@@ -60,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         changeFragment(0);
 
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
-                this, mDrawer, mToolbar,
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         mDrawer.setDrawerListener(mDrawerToggle);

@@ -44,7 +44,7 @@ public class PlaylistsFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        return id == R.id.top_music_settings || super.onOptionsItemSelected(item);
+        return id == R.id.top_cifras_settings || super.onOptionsItemSelected(item);
     }
 
     private void initComponents(View v) {

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.CifrasFragment">
     <item
-        android:id="@+id/top_music_settings"
+        android:id="@+id/top_cifras_settings"
         android:orderInCategory="100"
         android:title="@string/help_menu"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/top_music_search"
+        android:id="@+id/top_cifras_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search_menu"
         app:actionViewClass="android.support.v7.widget.SearchView"

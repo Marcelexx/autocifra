@@ -1,22 +1,31 @@
 package marceloferracin.autocifra.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.activities.MainActivity;
 import marceloferracin.autocifra.adapters.cifras.CifrasViewPagerAdapter;
 import marceloferracin.autocifra.layout.SlidingTabLayout;
 
 
 public class CifrasFragment extends Fragment {
+    private boolean mIsSearch;
+    private Drawable mNavigationDrawerOriginalBackground;
+    private Toolbar mToolbar;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cifras, container, false);
@@ -53,13 +62,51 @@ public class CifrasFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_music, menu);
+
+        mToolbar = MainActivity.getToolbar();
+        final DrawerLayout drawer = MainActivity.getDrawer();
+
+        final SearchView searchView = (SearchView) menu.findItem(R.id.top_cifras_search).getActionView();
+        mNavigationDrawerOriginalBackground = mToolbar.getNavigationIcon();
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mIsSearch = true;
+                drawer.closeDrawers();
+                mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                searchViewCloseEvent();
+
+                return false;
+            }
+        });
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!drawer.isDrawerOpen(GravityCompat.START)) {
+                    if (!mIsSearch) {
+                        drawer.openDrawer(GravityCompat.START);
+                    } else {
+                        searchView.onActionViewCollapsed();
+                        searchViewCloseEvent();
+                    }
+                } else {
+                    drawer.closeDrawers();
+                }
+            }
+        });
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        return id == R.id.top_music_settings || super.onOptionsItemSelected(item);
+    private void searchViewCloseEvent() {
+        mIsSearch = false;
+        mToolbar.setNavigationIcon(mNavigationDrawerOriginalBackground);
     }
 }
