@@ -15,6 +15,7 @@ import android.widget.ListView;
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
+import marceloferracin.autocifra.fragments.RankingFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static DrawerLayout mDrawer;
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 1:
                 fragment = new PlaylistsFragment();
+                break;
+            case 2:
+                fragment = new RankingFragment();
                 break;
         }
 

@@ -23,7 +23,7 @@ import marceloferracin.autocifra.models.PlaylistItem;
 public class TopPlaylistCifrasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_top_playlist_cifras, container, false);
+        View v = inflater.inflate(R.layout.fragment_cifras_top_playlist, container, false);
 
         initComponents(v);
 
@@ -36,7 +36,7 @@ public class TopPlaylistCifrasFragment extends Fragment {
         //TODO Ler do servidor
         List<PlaylistItem> playlistItemList = setPartialPlaylists();
 
-        final TopPlaylistCifrasListAdapter adapter = new TopPlaylistCifrasListAdapter(getActivity(), R.layout.top_playlist_cifras_item, playlistItemList);
+        final TopPlaylistCifrasListAdapter adapter = new TopPlaylistCifrasListAdapter(getActivity(), R.layout.cifras_top_playlist_item, playlistItemList);
         playlistCypherListView.setAdapter(adapter);
     }
 

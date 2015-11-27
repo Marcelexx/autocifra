@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragmentCifrasLayout"
+    android:id="@+id/fragmentRankingLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CifrasFragment">
@@ -11,28 +11,18 @@
         android:orientation="vertical">
 
         <marceloferracin.autocifra.layout.SlidingTabLayout
-            android:id="@+id/cifrasSlidingTabs"
+            android:id="@+id/rankingSlidingTabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_material_dark"
             android:elevation="2dp" />
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/cifrasViewPager"
+            android:id="@+id/rankingViewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
     </LinearLayout>
-
-    <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@mipmap/ic_add_circle_white_48dp"
-        android:contentDescription="@null" />
 
 </RelativeLayout>

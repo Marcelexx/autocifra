@@ -3,6 +3,7 @@
     <!-- Screen Titles-->
     <string name="cifras_title">Cifras</string>
     <string name="playlists_title">Playlists</string>
+    <string name="ranking_title">Ranking</string>
 
     <!-- Drawer Strings-->
     <string name="navigation_drawer_open">Abrir Menu</string>

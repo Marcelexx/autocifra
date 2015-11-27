@@ -51,7 +51,7 @@ public class TopCifrasListAdapter extends ArrayAdapter<CifraItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_cifras_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.cifras_top_item, null);
         }
 
         TextView musicTextView = (TextView) convertView.findViewById(R.id.musicTextView);

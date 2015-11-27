@@ -51,7 +51,7 @@ public class TopPlaylistCifrasListAdapter extends ArrayAdapter<PlaylistItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_playlist_cifras_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.cifras_top_playlist_item, null);
         }
 
         TextView playlistNameTextView = (TextView) convertView.findViewById(R.id.playlistNameTextView);

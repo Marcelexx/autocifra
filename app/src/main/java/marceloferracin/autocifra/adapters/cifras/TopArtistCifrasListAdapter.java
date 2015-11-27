@@ -51,7 +51,7 @@ public class TopArtistCifrasListAdapter extends ArrayAdapter<ArtistItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(mActivity).inflate(R.layout.top_artist_cifras_item, null);
+            convertView = LayoutInflater.from(mActivity).inflate(R.layout.cifras_top_artist_item, null);
         }
 
         TextView artistNameTextView = (TextView) convertView.findViewById(R.id.artistNameTextView);

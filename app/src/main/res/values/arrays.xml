@@ -15,4 +15,9 @@
         <item>Gênero</item>
         <item>Data</item>
     </array>
+
+    <array name="rankingOptions">
+        <item>Contribuintes</item>
+        <item>Músicos</item>
+    </array>
 </resources>
