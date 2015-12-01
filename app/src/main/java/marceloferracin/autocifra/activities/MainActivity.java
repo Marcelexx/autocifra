@@ -1,5 +1,6 @@
 package marceloferracin.autocifra.activities;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -69,17 +71,22 @@ public class MainActivity extends AppCompatActivity {
     private void changeFragment(int position) {
         Fragment fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
+        Resources r = getResources();
 
         switch (position) {
             default:
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
             case 0:
                 fragment = new CifrasFragment();
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
                 break;
             case 1:
                 fragment = new PlaylistsFragment();
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics()));
                 break;
             case 2:
                 fragment = new RankingFragment();
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
                 break;
         }
 

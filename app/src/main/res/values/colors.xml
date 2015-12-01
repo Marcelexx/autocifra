@@ -3,6 +3,7 @@
     <!-- Main Colors-->
     <color name="projectMainColor">#FF7043</color>
     <color name="projectMainColorDark">#F4511E</color>
+    <color name="appcompatColor">#222222</color>
 
     <!-- General Colors-->
     <color name="white">#FFFFFF</color>
@@ -10,6 +11,6 @@
 
     <!-- Components Colors-->
     <color name="drawerListColor">#424242</color>
-    <color name="tabsScrollColor">#FF7043</color>
-    <color name="tabUnselectedColor">#D3D3D3</color>
+    <color name="tabsScrollColor">#FFFFFF</color>
+    <color name="tabUnselectedColor">#F2F2F2</color>
 </resources>
