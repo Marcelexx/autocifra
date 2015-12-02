@@ -17,15 +17,15 @@ import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.activities.MainActivity;
-import marceloferracin.autocifra.adapters.ranking.RankingViewPagerAdapter;
+import marceloferracin.autocifra.adapters.talent.TalentViewPagerAdapter;
 import marceloferracin.autocifra.layout.SlidingTabLayout;
 
 /**
  *
- * Created by Marcelo Ferracin on 26/11/2015.
+ * Created by Marcelo Ferracin on 02/12/2015.
  */
 
-public class RankingFragment extends Fragment {
+public class TalentFragment extends Fragment {
     private boolean mIsSearch;
     private Drawable mNavigationDrawerOriginalBackground;
     private Toolbar mToolbar;
@@ -33,7 +33,7 @@ public class RankingFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_ranking, container, false);
+        View v = inflater.inflate(R.layout.fragment_talent, container, false);
         setHasOptionsMenu(true);
         initComponents(v);
         mActivity = (MainActivity) getActivity();
@@ -43,26 +43,26 @@ public class RankingFragment extends Fragment {
 
     private void initComponents(View v) {
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.main_toolbar_title);
-        toolbarTitle.setText(getString(R.string.ranking_title));
+        toolbarTitle.setText(getString(R.string.talent_title));
 
-        CharSequence titles[] = getResources().getStringArray(R.array.rankingOptions);
-        int numOfTabs = 2;
-        RankingViewPagerAdapter rankingViewPagerAdapter = new RankingViewPagerAdapter(getFragmentManager(), titles, numOfTabs);
+        CharSequence titles[] = getResources().getStringArray(R.array.talentOptions);
+        int numOfTabs = 3;
+        TalentViewPagerAdapter talentViewPagerAdapter = new TalentViewPagerAdapter(getFragmentManager(), titles, numOfTabs);
 
-        ViewPager rankingViewPager = (ViewPager) v.findViewById(R.id.rankingViewPager);
-        rankingViewPager.setAdapter(rankingViewPagerAdapter);
+        ViewPager talentViewPager = (ViewPager) v.findViewById(R.id.talentViewPager);
+        talentViewPager.setAdapter(talentViewPagerAdapter);
 
-        SlidingTabLayout rankingSlidingTabs = (SlidingTabLayout) v.findViewById(R.id.rankingSlidingTabs);
-        rankingSlidingTabs.setDistributeEvenly(true);
+        SlidingTabLayout talentSlidingTabs = (SlidingTabLayout) v.findViewById(R.id.talentSlidingTabs);
+        talentSlidingTabs.setDistributeEvenly(true);
 
-        rankingSlidingTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+        talentSlidingTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
                 return getResources().getColor(R.color.tabsScrollColor);
             }
         });
 
-        rankingSlidingTabs.setViewPager(rankingViewPager);
+        talentSlidingTabs.setViewPager(talentViewPager);
     }
 
     @Override

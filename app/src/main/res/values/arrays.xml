@@ -20,4 +20,10 @@
         <item>Contribuintes</item>
         <item>Músicos</item>
     </array>
+
+    <array name="talentOptions">
+        <item>Top Artistas</item>
+        <item>Novos Vídeos</item>
+        <item>Destaques da Semana</item>
+    </array>
 </resources>

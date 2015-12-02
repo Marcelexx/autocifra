@@ -13,4 +13,5 @@
     <color name="drawerListColor">#424242</color>
     <color name="tabsScrollColor">#FFFFFF</color>
     <color name="tabUnselectedColor">#F2F2F2</color>
+    <color name="floatingColorShadow">#44000000</color>
 </resources>

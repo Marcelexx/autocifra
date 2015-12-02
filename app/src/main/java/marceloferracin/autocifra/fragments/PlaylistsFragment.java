@@ -34,12 +34,14 @@ public class PlaylistsFragment extends Fragment {
     private boolean mIsSearch;
     private Drawable mNavigationDrawerOriginalBackground;
     private Toolbar mToolbar;
+    private MainActivity mActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_playlists, container, false);
         setHasOptionsMenu(true);
         initComponents(v);
+        mActivity = (MainActivity) getActivity();
 
         return v;
     }
@@ -127,8 +129,8 @@ public class PlaylistsFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_music, menu);
 
-        mToolbar = MainActivity.getToolbar();
-        final DrawerLayout drawer = MainActivity.getDrawer();
+        mToolbar = mActivity.getToolbar();
+        final DrawerLayout drawer = mActivity.getDrawer();
 
         final SearchView searchView = (SearchView) menu.findItem(R.id.top_cifras_search).getActionView();
         mNavigationDrawerOriginalBackground = mToolbar.getNavigationIcon();

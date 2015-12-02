@@ -1,6 +1,7 @@
 package marceloferracin.autocifra.activities;
 
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,10 +19,11 @@ import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
 import marceloferracin.autocifra.fragments.RankingFragment;
+import marceloferracin.autocifra.fragments.TalentFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private static DrawerLayout mDrawer;
-    private static Toolbar mToolbar;
+    private DrawerLayout mDrawer;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         initComponents();
     }
 
-    public static Toolbar getToolbar() {
+    public Toolbar getToolbar() {
         return mToolbar;
     }
 
-    public static DrawerLayout getDrawer() {
+    public DrawerLayout getDrawer() {
         return mDrawer;
     }
 
@@ -72,22 +74,33 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
         Resources r = getResources();
+        boolean hasElevation = false;
 
         switch (position) {
-            default:
-                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
             case 0:
                 fragment = new CifrasFragment();
-                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
                 break;
             case 1:
                 fragment = new PlaylistsFragment();
-                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics()));
+                hasElevation = true;
                 break;
             case 2:
                 fragment = new RankingFragment();
-                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
                 break;
+            case 3:
+                fragment = new TalentFragment();
+                break;
+            default:
+                fragment = new CifrasFragment();
+                break;
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (hasElevation) {
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, r.getDisplayMetrics()));
+            } else {
+                mToolbar.setElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0, r.getDisplayMetrics()));
+            }
         }
 
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
