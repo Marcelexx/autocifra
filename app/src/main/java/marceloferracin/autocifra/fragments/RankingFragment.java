@@ -67,7 +67,7 @@ public class RankingFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_music, menu);
+        inflater.inflate(R.menu.menu_lists, menu);
 
         mToolbar = mActivity.getToolbar();
         final DrawerLayout drawer = mActivity.getDrawer();

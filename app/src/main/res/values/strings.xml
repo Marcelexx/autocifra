@@ -13,4 +13,14 @@
     <!-- Menu Strings-->
     <string name="search_menu">Pesquisar</string>
     <string name="help_menu">Ajuda</string>
+
+
+
+
+
+
+
+
+    <!--REMOVER-->
+    <string name="test_cifra">Ajuda</string>
 </resources>

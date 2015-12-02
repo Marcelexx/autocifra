@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.adapters.ranking.TopMusicianRankingListAdapter;
+import marceloferracin.autocifra.adapters.talent.TopMusicianTalentListAdapter;
 import marceloferracin.autocifra.models.Profile;
+import marceloferracin.autocifra.models.TalentItem;
 
 /**
  *
@@ -34,56 +35,56 @@ public class TopMusicianTalentFragment extends Fragment {
         ListView musicianTalentListView = (ListView) v.findViewById(R.id.musicianTalentListView);
 
         //TODO Ler do servidor
-        List<Profile> videoItemList = setPartialProfiles();
+        List<TalentItem> videoItemList = setPartialProfiles();
 
-        final TopMusicianRankingListAdapter adapter = new TopMusicianRankingListAdapter(getActivity(), R.layout.talent_top_musician_item, videoItemList);
+        final TopMusicianTalentListAdapter adapter = new TopMusicianTalentListAdapter(getActivity(), R.layout.talent_top_musician_item, videoItemList);
         musicianTalentListView.setAdapter(adapter);
     }
 
-    private List<Profile> setPartialProfiles() {
-        List<Profile> profileItemList = new ArrayList<>();
+    private List<TalentItem> setPartialProfiles() {
+        List<TalentItem> talentItemList = new ArrayList<>();
 
-        Profile profileItem1 = new Profile();
-        profileItem1.setName("Marcelo Ferracin");
+        TalentItem talentItem1 = new TalentItem();
+        Profile profile1 = new Profile();
+        profile1.setName("Marcelo Ferracin");
+        talentItem1.setProfile(profile1);
+        talentItem1.setMusic("Army of Noise");
+        talentItem1.setArtist("Bullet For My Valentine");
 
-        Profile profileItem2 = new Profile();
-        profileItem2.setName("Mariana Nogueira");
+        TalentItem talentItem2 = new TalentItem();
+        Profile profile2 = new Profile();
+        profile2.setName("Mariana Nogueira");
+        talentItem2.setProfile(profile2);
+        talentItem2.setMusic("É Isso Aí");
+        talentItem2.setArtist("Ana Carolina");
 
-        Profile profileItem3 = new Profile();
-        profileItem3.setName("Wellington Messias");
+        TalentItem talentItem3 = new TalentItem();
+        Profile profile3 = new Profile();
+        profile3.setName("Wellington Messias");
+        talentItem3.setProfile(profile3);
+        talentItem3.setMusic("Fear of the Dark");
+        talentItem3.setArtist("Iron Maiden");
 
-        Profile profileItem4 = new Profile();
-        profileItem4.setName("Zeca Pagodinho");
+        TalentItem talentItem4 = new TalentItem();
+        Profile profile4 = new Profile();
+        profile4.setName("Zeca Pagodinho");
+        talentItem4.setProfile(profile4);
+        talentItem4.setMusic("Não Deixe o Samba Morrer");
+        talentItem4.setArtist("Alcione");
 
-        Profile profileItem5 = new Profile();
-        profileItem5.setName("Kiko Loureiro");
+        TalentItem talentItem5 = new TalentItem();
+        Profile profile5 = new Profile();
+        profile5.setName("Kiko Loureiro");
+        talentItem5.setProfile(profile5);
+        talentItem5.setMusic("Hangar 18");
+        talentItem5.setArtist("Megadeth");
 
-        Profile profileItem6 = new Profile();
-        profileItem6.setName("Martinho da Vila");
+        talentItemList.add(talentItem1);
+        talentItemList.add(talentItem2);
+        talentItemList.add(talentItem3);
+        talentItemList.add(talentItem4);
+        talentItemList.add(talentItem5);
 
-        Profile profileItem7 = new Profile();
-        profileItem7.setName("Angelica");
-
-        Profile profileItem8 = new Profile();
-        profileItem8.setName("Fabio de Melo");
-
-        Profile profileItem9 = new Profile();
-        profileItem9.setName("Joao da Costa");
-
-        Profile profileItem10 = new Profile();
-        profileItem10.setName("Paula Fernandes");
-
-        profileItemList.add(profileItem6);
-        profileItemList.add(profileItem4);
-        profileItemList.add(profileItem9);
-        profileItemList.add(profileItem2);
-        profileItemList.add(profileItem10);
-        profileItemList.add(profileItem1);
-        profileItemList.add(profileItem7);
-        profileItemList.add(profileItem8);
-        profileItemList.add(profileItem3);
-        profileItemList.add(profileItem5);
-
-        return profileItemList;
+        return talentItemList;
     }
 }

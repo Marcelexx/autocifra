@@ -1,17 +1,20 @@
 package marceloferracin.autocifra.fragments.cifrassubfragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.activities.CifraActivity;
 import marceloferracin.autocifra.adapters.cifras.TopCifrasListAdapter;
 import marceloferracin.autocifra.models.CifraItem;
 
@@ -38,6 +41,17 @@ public class TopCifrasFragment extends Fragment {
 
         final TopCifrasListAdapter adapter = new TopCifrasListAdapter(getActivity(), R.layout.cifras_top_item, cifraItemList);
         topMusicCypherListView.setAdapter(adapter);
+        topMusicCypherListView.setOnItemClickListener(musicItemClick());
+    }
+
+    private AdapterView.OnItemClickListener musicItemClick() {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), CifraActivity.class);
+                startActivity(intent);
+            }
+        };
     }
 
     private List<CifraItem> setPartialCifras() {
