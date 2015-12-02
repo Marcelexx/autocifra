@@ -9,16 +9,23 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.models.CifraItem;
 
 public class CifraActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cifra);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        CifraItem cifra = getIntent().getParcelableExtra("cifra");
+
+        if (cifra != null) {
+            TextView toolbarTitle = (TextView) findViewById(R.id.main_toolbar_title);
+            String cifraTitle = cifra.getArtist() + " - " + cifra.getMusic();
+            toolbarTitle.setText(cifraTitle);
+        }
 
         initComponents();
     }

@@ -24,6 +24,8 @@ import marceloferracin.autocifra.models.CifraItem;
  */
 
 public class TopCifrasFragment extends Fragment {
+    private TopCifrasListAdapter mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cifras_top, container, false);
@@ -39,8 +41,8 @@ public class TopCifrasFragment extends Fragment {
         //TODO Ler do servidor
         List<CifraItem> cifraItemList = setPartialCifras();
 
-        final TopCifrasListAdapter adapter = new TopCifrasListAdapter(getActivity(), R.layout.cifras_top_item, cifraItemList);
-        topMusicCypherListView.setAdapter(adapter);
+        mAdapter = new TopCifrasListAdapter(getActivity(), R.layout.cifras_top_item, cifraItemList);
+        topMusicCypherListView.setAdapter(mAdapter);
         topMusicCypherListView.setOnItemClickListener(musicItemClick());
     }
 
@@ -49,6 +51,7 @@ public class TopCifrasFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), CifraActivity.class);
+                intent.putExtra("cifra", mAdapter.getItem(position));
                 startActivity(intent);
             }
         };
