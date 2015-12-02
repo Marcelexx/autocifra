@@ -3,6 +3,7 @@ package marceloferracin.autocifra.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,11 +20,12 @@ public class CifraActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        CifraItem cifra = getIntent().getParcelableExtra("cifra");
+        CifraItem cifra = (CifraItem) getIntent().getSerializableExtra("cifra");
 
         if (cifra != null) {
             TextView toolbarTitle = (TextView) findViewById(R.id.main_toolbar_title);
-            String cifraTitle = cifra.getArtist() + " - " + cifra.getMusic();
+            String cifraTitle = cifra.getMusic() + " - " + cifra.getArtist();
+            toolbarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
             toolbarTitle.setText(cifraTitle);
         }
 
