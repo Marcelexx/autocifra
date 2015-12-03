@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -49,8 +51,20 @@ public class AddCifraActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Spinner addCifraTuningSpinner = (Spinner) findViewById(R.id.addCifraTuningSpinner);
+        final Spinner addCifraTuningSpinner = (Spinner) findViewById(R.id.addCifraTuningSpinner);
         CharSequence tunings[] = getResources().getStringArray(R.array.tuningOptions);
         addCifraTuningSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tunings));
+        addCifraTuningSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(android.R.color.darker_gray));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 }

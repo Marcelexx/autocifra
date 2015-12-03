@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Música"
+            android:text="@string/add_cifra_music_title"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -34,15 +34,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Digite o nome da Música"
-            android:textSize="16sp" />
+            android:hint="@string/add_cifra_music_hint"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:theme="@style/EditTextLineColor" />
 
         <TextView
             android:id="@+id/addCifraArtistTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Artista"
+            android:text="@string/add_cifra_artist_title"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -55,15 +58,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Digite o nome do Artista"
-            android:textSize="16sp" />
+            android:hint="@string/add_cifra_artist_hint"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:theme="@style/EditTextLineColor" />
 
         <TextView
             android:id="@+id/addCifraTuningTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Tom"
+            android:text="@string/add_cifra_tuning_title"
             android:textColor="@color/white"
             android:textSize="20sp" />
 

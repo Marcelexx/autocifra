@@ -15,7 +15,9 @@
         <item name="color">@android:color/white</item>
     </style>
 
-    <style name="ListEffect">
-        <item name="android:colorEdgeEffect">@color/appCompatColor</item>
+    <style name="EditTextLineColor" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 </resources>
