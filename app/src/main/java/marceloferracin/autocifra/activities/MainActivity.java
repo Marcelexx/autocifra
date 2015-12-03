@@ -13,9 +13,12 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.controls.SharedPreferencesControl;
 import marceloferracin.autocifra.fragments.AboutFragment;
 import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        ImageView profilePhotoImageView = (ImageView) findViewById(R.id.profilePhotoImageView);
+        TextView profileNameTextView = (TextView) findViewById(R.id.profileNameTextView);
+        TextView profileLevelTextView = (TextView) findViewById(R.id.profileLevelTextView);
         mDrawer = (DrawerLayout) findViewById(R.id.cifraOptionsDrawer);
         String[] cifraOptions = getResources().getStringArray(R.array.autoCifraOptionsArray);
         ListView drawerList = (ListView) findViewById(R.id.cifraOptionsDrawerList);
@@ -68,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
+
+        SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl();
+
+        if (sharedPreferencesControl.getIsLogged(this)) {
+            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
+            //TODO Trocar por nome
+            profileNameTextView.setText("Marcelo Ferracin");
+            profileLevelTextView.setText("Nível 1");
+            profileLevelTextView.setVisibility(View.VISIBLE);
+        } else {
+            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
+            profileNameTextView.setText(getString(R.string.profile_login_message));
+            profileLevelTextView.setVisibility(View.GONE);
+        }
     }
 
     private void changeFragment(int position) {

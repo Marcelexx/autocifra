@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">AutoCifra</string>
+    <!-- General Strings-->
+    <string name="version_name">Versão</string>
+
     <!-- Screen Titles-->
     <string name="cifras_title">Cifras</string>
     <string name="playlists_title">Playlists</string>
@@ -17,16 +20,15 @@
     <string name="help_menu">Ajuda</string>
     <string name="next_arrow">Prosseguir</string>
 
-    <!-- General Strings-->
-    <string name="version_name">Versão</string>
-
     <!-- Components Title-->
     <string name="add_cifra_music_title">Música</string>
     <string name="add_cifra_artist_title">Artista</string>
     <string name="add_cifra_tuning_title">Tom</string>
-
     <string name="add_cifra_music_hint">Digite o nome da Música</string>
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
+
+    <!-- Profile Strings-->
+    <string name="profile_login_message">Login ou Criar Conta</string>
 
     <!-- TESTE SOBRE-->
     <string name="about_text">Podemos já vislumbrar o modo pelo qual o comprometimento entre as equipes representa uma abertura para a melhoria das condições inegavelmente apropriadas.
