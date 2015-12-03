@@ -22,6 +22,11 @@
         <activity
             android:name=".activities.CifraActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.AddCifraActivity"
+            android:label="@string/title_activity_add_cifra"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
 </manifest>

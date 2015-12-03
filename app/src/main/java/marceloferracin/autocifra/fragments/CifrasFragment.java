@@ -1,5 +1,6 @@
 package marceloferracin.autocifra.fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,9 +14,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.activities.AddCifraActivity;
 import marceloferracin.autocifra.activities.MainActivity;
 import marceloferracin.autocifra.adapters.cifras.CifrasViewPagerAdapter;
 import marceloferracin.autocifra.layout.SlidingTabLayout;
@@ -59,6 +62,10 @@ public class CifrasFragment extends Fragment {
         });
 
         cifrasSlidingTabs.setViewPager(cifrasViewPager);
+
+        ImageButton addCifraButton = (ImageButton) v.findViewById(R.id.addCifraButton);
+
+        addCifraButton.setOnClickListener(setAddCifraButtonClick());
     }
 
     @Override
@@ -145,6 +152,16 @@ public class CifrasFragment extends Fragment {
 
             @Override
             public void onDrawerStateChanged(int newState) {
+            }
+        };
+    }
+
+    private View.OnClickListener setAddCifraButtonClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mActivity, AddCifraActivity.class);
+                startActivity(intent);
             }
         };
     }

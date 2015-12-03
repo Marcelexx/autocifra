@@ -6,6 +6,7 @@
     <string name="ranking_title">Ranking</string>
     <string name="talent_title">Mostre Seu Talento</string>
     <string name="about_title">Sobre</string>
+    <string name="add_cifra_title">Adicionar Cifra</string>
 
     <!-- Drawer Strings-->
     <string name="navigation_drawer_open">Abrir Menu</string>
@@ -14,6 +15,7 @@
     <!-- Menu Strings-->
     <string name="search_menu">Pesquisar</string>
     <string name="help_menu">Ajuda</string>
+    <string name="next_arrow">Prosseguir</string>
 
     <!-- General Strings-->
     <string name="version_name">Versão</string>
@@ -132,4 +134,5 @@
 \nCom você, com você
 \n
 \nCom você, com você</string>
+    <string name="title_activity_add_cifra">AddCifraActivity</string>
 </resources>
