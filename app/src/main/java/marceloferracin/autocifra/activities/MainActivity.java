@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        mDrawer = (DrawerLayout) findViewById(R.id.cifra_options_drawer);
+        mDrawer = (DrawerLayout) findViewById(R.id.cifraOptionsDrawer);
         String[] cifraOptions = getResources().getStringArray(R.array.autoCifraOptionsArray);
-        ListView drawerList = (ListView) findViewById(R.id.cifra_options_drawer_list);
+        ListView drawerList = (ListView) findViewById(R.id.cifraOptionsDrawerList);
 
         drawerList.setAdapter(new ArrayAdapter<>(this,
                 R.layout.cifra_options_item, cifraOptions));
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit();
         mDrawer.closeDrawers();
     }
 }

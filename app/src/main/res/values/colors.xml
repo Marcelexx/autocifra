@@ -3,7 +3,7 @@
     <!-- Main Colors-->
     <color name="projectMainColor">#009688</color>
     <color name="projectMainColorDark">#00796B</color>
-    <color name="appcompatColor">#222222</color>
+    <color name="appCompatColor">#222222</color>
 
     <!-- General Colors-->
     <color name="white">#FFFFFF</color>

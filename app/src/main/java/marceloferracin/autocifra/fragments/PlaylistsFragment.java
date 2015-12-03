@@ -175,4 +175,6 @@ public class PlaylistsFragment extends Fragment {
         mIsSearch = false;
         mToolbar.setNavigationIcon(mNavigationDrawerOriginalBackground);
     }
+
+    //TODO Corrigir bug de Drawer
 }
