@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.fragments.AboutFragment;
 import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
 import marceloferracin.autocifra.fragments.RankingFragment;
@@ -88,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 fragment = new TalentFragment();
+                break;
+            case 4:
+                fragment = new AboutFragment();
                 break;
             default:
                 fragment = new CifrasFragment();

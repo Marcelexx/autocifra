@@ -74,25 +74,44 @@ public class TalentFragment extends Fragment {
 
         final SearchView searchView = (SearchView) menu.findItem(R.id.top_cifras_search).getActionView();
         mNavigationDrawerOriginalBackground = mToolbar.getNavigationIcon();
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
+
+        searchView.setOnSearchClickListener(setSearchClick(drawer));
+        searchView.setOnCloseListener(setSearchClose());
+        mToolbar.setNavigationOnClickListener(setToolbarNavigationClick(drawer, searchView));
+        drawer.setDrawerListener(setDrawerListener(searchView));
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    private void searchViewCloseEvent() {
+        mIsSearch = false;
+        mToolbar.setNavigationIcon(mNavigationDrawerOriginalBackground);
+    }
+
+    private View.OnClickListener setSearchClick(final DrawerLayout drawer) {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mIsSearch = true;
                 drawer.closeDrawers();
                 mToolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
             }
-        });
+        };
+    }
 
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+    private SearchView.OnCloseListener setSearchClose() {
+        return new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
                 searchViewCloseEvent();
 
                 return false;
             }
-        });
+        };
+    }
 
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    private View.OnClickListener setToolbarNavigationClick(final DrawerLayout drawer, final SearchView searchView) {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!drawer.isDrawerOpen(GravityCompat.START)) {
@@ -106,13 +125,31 @@ public class TalentFragment extends Fragment {
                     drawer.closeDrawers();
                 }
             }
-        });
-
-        super.onCreateOptionsMenu(menu, inflater);
+        };
     }
 
-    private void searchViewCloseEvent() {
-        mIsSearch = false;
-        mToolbar.setNavigationIcon(mNavigationDrawerOriginalBackground);
+    private DrawerLayout.DrawerListener setDrawerListener(final SearchView searchView) {
+        return new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                if (mIsSearch) {
+                    searchView.onActionViewCollapsed();
+                    searchViewCloseEvent();
+                    mIsSearch = false;
+                }
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+            }
+        };
     }
 }
