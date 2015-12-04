@@ -1,5 +1,6 @@
 package marceloferracin.autocifra.activities;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,8 +14,10 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
@@ -28,6 +31,10 @@ import marceloferracin.autocifra.fragments.TalentFragment;
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar mToolbar;
+    private SharedPreferencesControl mSharedPreferencesControl;
+    private ImageButton mProfileOptionsButton;
+
+    public static MainActivity mMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        mMainActivity = this;
+        mSharedPreferencesControl = new SharedPreferencesControl(this);
         initComponents();
     }
 
@@ -47,13 +56,36 @@ public class MainActivity extends AppCompatActivity {
         return mDrawer;
     }
 
-    private void initComponents() {
+    public static MainActivity getInstance() {
+        return mMainActivity;
+    }
+
+    public void updateProfileInfo() {
         ImageView profilePhotoImageView = (ImageView) findViewById(R.id.profilePhotoImageView);
         TextView profileNameTextView = (TextView) findViewById(R.id.profileNameTextView);
         TextView profileLevelTextView = (TextView) findViewById(R.id.profileLevelTextView);
+        mProfileOptionsButton = (ImageButton) findViewById(R.id.profileOptionsButton);
+
+        if (mSharedPreferencesControl.getIsLogged()) {
+            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
+            //TODO Trocar por nome
+            profileNameTextView.setText("Marcelo Ferracin");
+            profileLevelTextView.setText("Nível 1");
+            profileLevelTextView.setVisibility(View.VISIBLE);
+            mProfileOptionsButton.setVisibility(View.VISIBLE);
+        } else {
+            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
+            profileNameTextView.setText(getString(R.string.profile_login_message));
+            profileLevelTextView.setVisibility(View.GONE);
+            mProfileOptionsButton.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void initComponents() {
         mDrawer = (DrawerLayout) findViewById(R.id.cifraOptionsDrawer);
         String[] cifraOptions = getResources().getStringArray(R.array.autoCifraOptionsArray);
         ListView drawerList = (ListView) findViewById(R.id.cifraOptionsDrawerList);
+        RelativeLayout profileLayout = (RelativeLayout) findViewById(R.id.profileLayout);
 
         drawerList.setAdapter(new ArrayAdapter<>(this,
                 R.layout.cifra_options_item, cifraOptions));
@@ -75,19 +107,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
 
-        SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl();
+        updateProfileInfo();
 
-        if (sharedPreferencesControl.getIsLogged(this)) {
-            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
-            //TODO Trocar por nome
-            profileNameTextView.setText("Marcelo Ferracin");
-            profileLevelTextView.setText("Nível 1");
-            profileLevelTextView.setVisibility(View.VISIBLE);
-        } else {
-            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
-            profileNameTextView.setText(getString(R.string.profile_login_message));
-            profileLevelTextView.setVisibility(View.GONE);
-        }
+        profileLayout.setOnClickListener(setProfileLayoutClick());
+        mProfileOptionsButton.setOnClickListener(setProfileOptionsClick());
     }
 
     private void changeFragment(int position) {
@@ -128,5 +151,30 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager.beginTransaction().replace(R.id.contentFrame, fragment).commit();
         mDrawer.closeDrawers();
+    }
+
+    private View.OnClickListener setProfileLayoutClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mSharedPreferencesControl.getIsLogged()) {
+                    mDrawer.closeDrawers();
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    //TODO Perfil de usuário
+                }
+            }
+        };
+    }
+
+    private View.OnClickListener setProfileOptionsClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSharedPreferencesControl.setIsLogged(false);
+                updateProfileInfo();
+            }
+        };
     }
 }

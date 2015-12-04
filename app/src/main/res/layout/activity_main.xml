@@ -22,33 +22,53 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="240dp"
+        android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/profileLayout"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@color/projectMainColor">
+            android:layout_height="105dp"
+            android:background="@color/projectMainColor"
+            android:clickable="true">
 
-            <ImageView
-                android:id="@+id/profilePhotoImageView"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:background="@mipmap/ic_account_circle_white_48dp"
-                android:contentDescription="@null" />
+            <RelativeLayout
+                android:id="@+id/profileInfoLayout"
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/profilePhotoImageView"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@mipmap/ic_account_circle_white_48dp"
+                    android:contentDescription="@null" />
+
+                <ImageButton
+                    android:id="@+id/profileOptionsButton"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/abc_spinner_mtrl_am_alpha"
+                    android:contentDescription="@null" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/profilePhotoImageView"
-                android:layout_toRightOf="@+id/profilePhotoImageView"
+                android:layout_toEndOf="@+id/profileInfoLayout"
+                android:layout_toRightOf="@+id/profileInfoLayout"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -58,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -67,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 

@@ -10,6 +10,7 @@
     <string name="talent_title">Mostre Seu Talento</string>
     <string name="about_title">Sobre</string>
     <string name="add_cifra_title">Adicionar Cifra</string>
+    <string name="login_title">Login</string>
 
     <!-- Drawer Strings-->
     <string name="navigation_drawer_open">Abrir Menu</string>
@@ -21,18 +22,56 @@
     <string name="next_arrow">Prosseguir</string>
 
     <!-- Components Title-->
-    <string name="add_cifra_music_title">Música</string>
-    <string name="add_cifra_artist_title">Artista</string>
-    <string name="add_cifra_tuning_title">Tom</string>
+    <string name="add_cifra_music_title">MÚSICA</string>
+    <string name="add_cifra_artist_title">ARTISTA</string>
+    <string name="add_cifra_tuning_title">TOM</string>
     <string name="add_cifra_music_hint">Digite o nome da Música</string>
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
+
+    <string name="login_input_title">LOGIN</string>
+    <string name="password_input_title">SENHA</string>
+    <string name="login_input_hint">Digite seu login</string>
+    <string name="password_input_hint">Digite sua senha</string>
+    <string name="sign_up_button">Cadastrar</string>
+    <string name="login_button">Login</string>
 
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- TESTE SOBRE-->
     <string name="about_text">Podemos já vislumbrar o modo pelo qual o comprometimento entre as equipes representa uma abertura para a melhoria das condições inegavelmente apropriadas.
         O cuidado em identificar pontos críticos no fenômeno da Internet possibilita uma melhor visão global dos índices pretendidos.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!--REMOVER-->
@@ -143,4 +182,5 @@
 \n
 \nCom você, com você</string>
     <string name="title_activity_add_cifra">AddCifraActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
