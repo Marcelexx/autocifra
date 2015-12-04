@@ -30,11 +30,11 @@
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
 
     <!-- Login Strings-->
-    <string name="login_input_title">LOGIN</string>
-    <string name="password_input_title">SENHA</string>
-    <string name="login_input_hint">Digite seu login</string>
-    <string name="password_input_hint">Digite sua senha</string>
-    <string name="sign_up_button">Cadastrar</string>
+    <string name="login_email_input_title">E-MAIL</string>
+    <string name="login_password_input_title">SENHA</string>
+    <string name="login_email_input_hint">Digite seu e-mail</string>
+    <string name="login_password_input_hint">Digite sua senha</string>
+    <string name="login_sign_up_button">Cadastrar</string>
     <string name="login_button">Login</string>
 
     <!-- Sign Up Strings-->
