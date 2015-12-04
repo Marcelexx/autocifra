@@ -47,6 +47,7 @@
     <string name="sign_up_password_input_hint">Digite sua senha</string>
     <string name="sign_up_confirm_password_input_hint">Digite novamente sua senha</string>
     <string name="sign_up_photo_text">Adicione uma foto</string>
+    <string name="sign_up_finish_button">Finalizar</string>
 
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>

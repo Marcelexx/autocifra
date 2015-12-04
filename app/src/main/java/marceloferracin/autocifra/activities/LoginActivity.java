@@ -59,11 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
-                sharedPreferencesControl.setIsLogged(true);
-
-                MainActivity.getInstance().updateProfileInfo();
-                finish();
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
             }
         };
     }
@@ -72,8 +69,11 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
+                SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
+                sharedPreferencesControl.setIsLogged(true);
+
+                MainActivity.getInstance().updateProfileInfo();
+                finish();
             }
         };
     }

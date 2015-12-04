@@ -43,9 +43,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        Button signUpButton = (Button) findViewById(R.id.signUpButton);
+        Button signUpFinishButton = (Button) findViewById(R.id.signUpFinishButton);
 
-        signUpButton.setOnClickListener(setSignUpClick());
+        signUpFinishButton.setOnClickListener(setSignUpClick());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
