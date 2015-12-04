@@ -1,6 +1,5 @@
 package marceloferracin.autocifra.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,18 +11,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
-import marceloferracin.autocifra.controls.SharedPreferencesControl;
 
-public class LoginActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         TextView toolbarTitle = (TextView) findViewById(R.id.main_toolbar_title);
-        toolbarTitle.setText(getString(R.string.login_title));
+        toolbarTitle.setText(getString(R.string.sign_up_title));
 
         initComponents();
     }
@@ -46,10 +44,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initComponents() {
         Button signUpButton = (Button) findViewById(R.id.signUpButton);
-        Button loginButton = (Button) findViewById(R.id.loginButton);
 
         signUpButton.setOnClickListener(setSignUpClick());
-        loginButton.setOnClickListener(setLoginClick());
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -59,21 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
-                sharedPreferencesControl.setIsLogged(true);
-
-                MainActivity.getInstance().updateProfileInfo();
                 finish();
-            }
-        };
-    }
-
-    private View.OnClickListener setLoginClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
             }
         };
     }

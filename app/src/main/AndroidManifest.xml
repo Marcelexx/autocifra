@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="marceloferracin.autocifra"
-    android:versionCode="2"
-    android:versionName="1.1">
+    package="marceloferracin.autocifra">
 
     <application
         android:allowBackup="true"
@@ -24,12 +22,13 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.AddCifraActivity"
-            android:label="@string/title_activity_add_cifra"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

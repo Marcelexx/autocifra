@@ -11,6 +11,7 @@
     <string name="about_title">Sobre</string>
     <string name="add_cifra_title">Adicionar Cifra</string>
     <string name="login_title">Login</string>
+    <string name="sign_up_title">Cadastrar</string>
 
     <!-- Drawer Strings-->
     <string name="navigation_drawer_open">Abrir Menu</string>
@@ -28,6 +29,7 @@
     <string name="add_cifra_music_hint">Digite o nome da Música</string>
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
 
+    <!-- Login Strings-->
     <string name="login_input_title">LOGIN</string>
     <string name="password_input_title">SENHA</string>
     <string name="login_input_hint">Digite seu login</string>
@@ -35,43 +37,24 @@
     <string name="sign_up_button">Cadastrar</string>
     <string name="login_button">Login</string>
 
+    <!-- Sign Up Strings-->
+    <string name="sign_up_name_input_title">NOME</string>
+    <string name="sign_up_email_input_title">E-MAIL</string>
+    <string name="sign_up_password_input_title">SENHA</string>
+    <string name="sign_up_confirm_password_input_title">CONFIRMAR SENHA</string>
+    <string name="sign_up_name_input_hint">Digite seu nome</string>
+    <string name="sign_up_email_input_hint">Digite seu e-mail</string>
+    <string name="sign_up_password_input_hint">Digite sua senha</string>
+    <string name="sign_up_confirm_password_input_hint">Digite novamente sua senha</string>
+    <string name="sign_up_photo_text">Adicione uma foto</string>
+
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <!-- TESTE SOBRE-->
     <string name="about_text">Podemos já vislumbrar o modo pelo qual o comprometimento entre as equipes representa uma abertura para a melhoria das condições inegavelmente apropriadas.
         O cuidado em identificar pontos críticos no fenômeno da Internet possibilita uma melhor visão global dos índices pretendidos.</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <!--REMOVER-->
@@ -181,6 +164,4 @@
 \nCom você, com você
 \n
 \nCom você, com você</string>
-    <string name="title_activity_add_cifra">AddCifraActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
 </resources>
