@@ -39,6 +39,7 @@
 
     <!-- Sign Up Strings-->
     <string name="sign_up_name_input_title">NOME</string>
+    <string name="sign_up_instrument_input_title">INSTRUMENTO PRINCIPAL</string>
     <string name="sign_up_email_input_title">E-MAIL</string>
     <string name="sign_up_password_input_title">SENHA</string>
     <string name="sign_up_confirm_password_input_title">CONFIRMAR SENHA</string>

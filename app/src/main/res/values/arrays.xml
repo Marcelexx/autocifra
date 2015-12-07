@@ -37,4 +37,13 @@
         <item>F</item>
         <item>G</item>
     </array>
+
+    <array name="instrumentOptions">
+        <item>Nenhum</item>
+        <item>Guitarra</item>
+        <item>Violão</item>
+        <item>Baixo</item>
+        <item>Bateria</item>
+        <item>Piano</item>
+    </array>
 </resources>

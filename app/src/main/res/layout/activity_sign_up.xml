@@ -67,6 +67,26 @@
                     android:theme="@style/EditTextLineColor" />
 
                 <TextView
+                    android:id="@+id/profileInstrumentTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/sign_up_instrument_input_title"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white" />
+
+                <Spinner
+                    android:id="@+id/mainInstrumentSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
                     android:id="@+id/profileEmailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

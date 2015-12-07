@@ -7,7 +7,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
@@ -44,8 +46,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void initComponents() {
         Button signUpFinishButton = (Button) findViewById(R.id.signUpFinishButton);
+        Spinner mainInstrumentSpinner = (Spinner) findViewById(R.id.mainInstrumentSpinner);
 
         signUpFinishButton.setOnClickListener(setSignUpClick());
+        CharSequence instruments[] = getResources().getStringArray(R.array.instrumentOptions);
+        mainInstrumentSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, instruments));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
