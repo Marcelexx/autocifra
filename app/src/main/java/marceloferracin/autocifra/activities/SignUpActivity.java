@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.utils.Resources;
 import marceloferracin.autocifra.utils.Validations;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -70,11 +71,13 @@ public class SignUpActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validateFields() != -1) {
+                int validationId = validateFields();
+
+                if (validationId == -1) {
                     finish();
                 } else {
-                    //TODO Trocar Toast
-                    Toast.makeText(SignUpActivity.this, "Erro de validação", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, Resources.getStringById(SignUpActivity.this,
+                            validationId), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -82,12 +85,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     private int validateFields() {
         if (!Validations.emailValidation(mSignUpEmailEditText.getText().toString())) {
-            return 0;
+            return R.string.sign_up_email_invalid;
         } else if (mSignUpPasswordEditText.getText().length() > 5) {
             if (!Validations.passwordConfirmation(mSignUpPasswordEditText.getText().toString(),
                     mSignUpConfirmPasswordEditText.getText().toString())) {
-                return 1;
+                return R.string.sign_up_password_invalid;
             }
+        } else {
+            return R.string.sign_up_confirm_password_invalid;
         }
 
         return -1;

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.controls.SharedPreferencesControl;
+import marceloferracin.autocifra.utils.Resources;
 import marceloferracin.autocifra.utils.Validations;
 
 public class LoginActivity extends AppCompatActivity {
@@ -77,15 +78,17 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validateFields() != -1) {
+                int validationId = validateFields();
+
+                if (validationId == -1) {
                     SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
                     sharedPreferencesControl.setIsLogged(true);
 
                     MainActivity.getInstance().updateProfileInfo();
                     finish();
                 } else {
-                    //TODO Trocar Toast
-                    Toast.makeText(LoginActivity.this, "Erro de validação", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, Resources.getStringById(LoginActivity.this,
+                            validationId), Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -93,9 +96,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private int validateFields() {
         if (!Validations.emailValidation(mLoginEmailEditText.getText().toString())) {
-            return 0;
+            return R.string.login_email_invalid;
         } else if (mLoginPasswordEditText.getText().length() < 6) {
-            return 1;
+            return R.string.login_password_invalid;
         }
 
         return -1;

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">AutoCifra</string>
+
     <!-- General Strings-->
     <string name="version_name">Versão</string>
+    <string name="string_not_found">Não foi encontrado</string>
 
     <!-- Screen Titles-->
     <string name="cifras_title">Cifras</string>
@@ -22,7 +24,7 @@
     <string name="help_menu">Ajuda</string>
     <string name="next_arrow">Prosseguir</string>
 
-    <!-- Components Title-->
+    <!-- Add Cifra Strings-->
     <string name="add_cifra_music_title">MÚSICA</string>
     <string name="add_cifra_artist_title">ARTISTA</string>
     <string name="add_cifra_tuning_title">TOM</string>
@@ -52,6 +54,13 @@
 
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>
+
+    <!-- Validation Strings-->
+    <string name="login_email_invalid">O formato do e-mail está incorreto</string>
+    <string name="login_password_invalid">A senha deve ter no mínimo 6 caracteres</string>
+    <string name="sign_up_email_invalid">O formato do e-mail está incorreto</string>
+    <string name="sign_up_password_invalid">A senha deve ter no mínimo 6 caracteres</string>
+    <string name="sign_up_confirm_password_invalid">A senha e a confirmação de senha estão diferentes</string>
 
 
     <!-- TESTE SOBRE-->
