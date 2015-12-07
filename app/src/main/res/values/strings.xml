@@ -30,14 +30,15 @@
     <string name="add_cifra_tuning_title">TOM</string>
     <string name="add_cifra_music_hint">Digite o nome da Música</string>
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
+    <string name="add_cifra_continue_button">CONTINUAR</string>
 
     <!-- Login Strings-->
     <string name="login_email_input_title">E-MAIL</string>
     <string name="login_password_input_title">SENHA</string>
     <string name="login_email_input_hint">Digite seu e-mail</string>
     <string name="login_password_input_hint">Digite sua senha</string>
-    <string name="login_sign_up_button">Cadastrar</string>
-    <string name="login_button">Login</string>
+    <string name="login_sign_up_button">CADASTRAR</string>
+    <string name="login_button">LOGIN</string>
 
     <!-- Sign Up Strings-->
     <string name="sign_up_name_input_title">NOME</string>
@@ -50,7 +51,7 @@
     <string name="sign_up_password_input_hint">Digite sua senha</string>
     <string name="sign_up_confirm_password_input_hint">Digite novamente sua senha</string>
     <string name="sign_up_photo_text">Adicione uma foto</string>
-    <string name="sign_up_finish_button">Finalizar</string>
+    <string name="sign_up_finish_button">FINALIZAR</string>
 
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>
