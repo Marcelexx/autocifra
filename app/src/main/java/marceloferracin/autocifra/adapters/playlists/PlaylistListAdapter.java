@@ -13,7 +13,7 @@ import java.util.List;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.models.PlaylistItem;
-import marceloferracin.autocifra.utils.StringMatcher;
+import marceloferracin.autocifra.utils.Validations;
 
 /**
  * Created by Marcelo Ferracin on 24/11/2015.
@@ -107,12 +107,12 @@ public class PlaylistListAdapter extends ArrayAdapter<PlaylistItem> implements S
             for (int j = 0; j < getCount(); j++) {
                 if (i == 0) {
                     for (int k = 0; k <= 9; k++) {
-                        if (StringMatcher.match(String.valueOf(getItem(j).getPlaylist().charAt(0)), String.valueOf(k))) {
+                        if (Validations.match(String.valueOf(getItem(j).getPlaylist().charAt(0)), String.valueOf(k))) {
                             return j;
                         }
                     }
                 } else {
-                    if (StringMatcher.match(String.valueOf(getItem(j).getPlaylist().charAt(0)), String.valueOf(mSections.charAt(i)))) {
+                    if (Validations.match(String.valueOf(getItem(j).getPlaylist().charAt(0)), String.valueOf(mSections.charAt(i)))) {
                         return j;
                     }
                 }

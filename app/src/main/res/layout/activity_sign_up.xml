@@ -101,11 +101,13 @@
                     android:background="@color/white" />
 
                 <EditText
+                    android:id="@+id/signUpEmailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:hint="@string/sign_up_email_input_hint"
                     android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:textSize="16sp"
                     android:theme="@style/EditTextLineColor" />
@@ -125,6 +127,7 @@
                     android:background="@color/white" />
 
                 <EditText
+                    android:id="@+id/signUpPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -150,6 +153,7 @@
                     android:background="@color/white" />
 
                 <EditText
+                    android:id="@+id/signUpConfirmPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

@@ -9,12 +9,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.controls.SharedPreferencesControl;
+import marceloferracin.autocifra.utils.Validations;
 
 public class LoginActivity extends AppCompatActivity {
+    private EditText mLoginEmailEditText;
+    private EditText mLoginPasswordEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        mLoginEmailEditText = (EditText) findViewById(R.id.loginEmailEditText);
+        mLoginPasswordEditText = (EditText) findViewById(R.id.loginPasswordEditText);
         Button signUpButton = (Button) findViewById(R.id.signUpButton);
         Button loginButton = (Button) findViewById(R.id.loginButton);
 
@@ -69,12 +77,27 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
-                sharedPreferencesControl.setIsLogged(true);
+                if (validateFields() != -1) {
+                    SharedPreferencesControl sharedPreferencesControl = new SharedPreferencesControl(LoginActivity.this);
+                    sharedPreferencesControl.setIsLogged(true);
 
-                MainActivity.getInstance().updateProfileInfo();
-                finish();
+                    MainActivity.getInstance().updateProfileInfo();
+                    finish();
+                } else {
+                    //TODO Trocar Toast
+                    Toast.makeText(LoginActivity.this, "Erro de validação", Toast.LENGTH_SHORT).show();
+                }
             }
         };
+    }
+
+    private int validateFields() {
+        if (!Validations.emailValidation(mLoginEmailEditText.getText().toString())) {
+            return 0;
+        } else if (mLoginPasswordEditText.getText().length() < 6) {
+            return 1;
+        }
+
+        return -1;
     }
 }

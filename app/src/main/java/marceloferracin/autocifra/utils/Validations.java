@@ -1,7 +1,10 @@
 package marceloferracin.autocifra.utils;
 
 
-public class StringMatcher {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Validations {
     private final static char KOREAN_UNICODE_START = '가';
     private final static char KOREAN_UNICODE_END = '힣';
     private final static char KOREAN_UNIT = '까' - '가';
@@ -64,5 +67,19 @@ public class StringMatcher {
         }
 
         return KOREAN_INITIAL[(c - KOREAN_UNICODE_START) / KOREAN_UNIT];
+    }
+
+    public static boolean emailValidation(String email) {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.find();
+    }
+
+    public static boolean passwordConfirmation(String password, String confirmPassword) {
+        Pattern pattern = Pattern.compile(password, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(confirmPassword);
+
+        return matcher.matches();
     }
 }

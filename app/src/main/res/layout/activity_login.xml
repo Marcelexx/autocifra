@@ -31,11 +31,13 @@
             android:background="@color/white" />
 
         <EditText
+            android:id="@+id/loginEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:hint="@string/login_email_input_hint"
             android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textSize="16sp"
             android:theme="@style/EditTextLineColor" />
@@ -55,6 +57,7 @@
             android:background="@color/white" />
 
         <EditText
+            android:id="@+id/loginPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

@@ -9,12 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.utils.Validations;
 
 public class SignUpActivity extends AppCompatActivity {
+    private EditText mSignUpEmailEditText;
+    private EditText mSignUpPasswordEditText;
+    private EditText mSignUpConfirmPasswordEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        mSignUpEmailEditText = (EditText) findViewById(R.id.signUpEmailEditText);
+        mSignUpPasswordEditText = (EditText) findViewById(R.id.signUpPasswordEditText);
+        mSignUpConfirmPasswordEditText = (EditText) findViewById(R.id.signUpConfirmPasswordEditText);
         Button signUpFinishButton = (Button) findViewById(R.id.signUpFinishButton);
         Spinner mainInstrumentSpinner = (Spinner) findViewById(R.id.mainInstrumentSpinner);
 
@@ -60,8 +70,26 @@ public class SignUpActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if (validateFields() != -1) {
+                    finish();
+                } else {
+                    //TODO Trocar Toast
+                    Toast.makeText(SignUpActivity.this, "Erro de validação", Toast.LENGTH_SHORT).show();
+                }
             }
         };
+    }
+
+    private int validateFields() {
+        if (!Validations.emailValidation(mSignUpEmailEditText.getText().toString())) {
+            return 0;
+        } else if (mSignUpPasswordEditText.getText().length() > 5) {
+            if (!Validations.passwordConfirmation(mSignUpPasswordEditText.getText().toString(),
+                    mSignUpConfirmPasswordEditText.getText().toString())) {
+                return 1;
+            }
+        }
+
+        return -1;
     }
 }
