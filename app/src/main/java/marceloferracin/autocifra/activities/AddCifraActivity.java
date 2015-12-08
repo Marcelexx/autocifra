@@ -1,5 +1,6 @@
 package marceloferracin.autocifra.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -38,7 +40,18 @@ public class AddCifraActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        final Spinner addCifraTuningSpinner = (Spinner) findViewById(R.id.addCifraTuningSpinner);
+        Button addCifraContinueButton = (Button) findViewById(R.id.addCifraContinueButton);
+        Spinner addCifraTuningSpinner = (Spinner) findViewById(R.id.addCifraTuningSpinner);
+
+        addCifraContinueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddCifraActivity.this, AddCifraWriteActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         CharSequence tunings[] = getResources().getStringArray(R.array.tuningOptions);
         addCifraTuningSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tunings));
         addCifraTuningSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

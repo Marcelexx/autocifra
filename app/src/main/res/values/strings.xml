@@ -31,6 +31,7 @@
     <string name="add_cifra_music_hint">Digite o nome da Música</string>
     <string name="add_cifra_artist_hint">Digite o nome do Artista</string>
     <string name="add_cifra_continue_button">CONTINUAR</string>
+    <string name="add_cifra_send_button">ENVIAR</string>
 
     <!-- Login Strings-->
     <string name="login_email_input_title">E-MAIL</string>
@@ -177,4 +178,5 @@
 \n
 \nCom você, com você</string>
     <string name="title_activity_add_cifra_write">AddCifraWriteActivity</string>
+    <string name="title_activity_add_cifra_chords">AddCifraChordsActivity</string>
 </resources>
