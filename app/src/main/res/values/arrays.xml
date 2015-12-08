@@ -46,4 +46,22 @@
         <item>Bateria</item>
         <item>Piano</item>
     </array>
+
+    <array name="numberOfChordsOptions">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>8</item>
+    </array>
+
+    <array name="chordsOptions">
+        <item />
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+    </array>
 </resources>
