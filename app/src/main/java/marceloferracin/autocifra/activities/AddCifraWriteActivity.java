@@ -180,10 +180,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import marceloferracin.autocifra.R;
@@ -213,12 +211,9 @@ public class AddCifraWriteActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        Spinner addCifraNumberOfChrods = (Spinner) findViewById(R.id.addCifraNumberOfChrods);
         final EditText addCifraEditText = (EditText) findViewById(R.id.addCifraEditText);
         Button addCifraSendButton = (Button) findViewById(R.id.addCifraSendButton);
 
-        CharSequence numberOfChords[] = getResources().getStringArray(R.array.numberOfChordsOptions);
-        addCifraNumberOfChrods.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numberOfChords));
         addCifraSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
