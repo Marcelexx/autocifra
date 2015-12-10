@@ -1,8 +1,10 @@
 package marceloferracin.autocifra.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -12,30 +14,23 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import marceloferracin.autocifra.R;
 
 public class AddCifraChordsActivity extends AppCompatActivity {
-    private LinearLayout mAddCifraMainLayout;
-    private LinearLayout mAddCifraContentLayout;
-
-    private LinearLayout mAddCifraOneChordLayout;
-    private LinearLayout mAddCifraTwoChordLayout;
-    private LinearLayout mAddCifraFourChordLayout;
-
-    private Spinner mAddCifraOneTuningSpinner;
-
-    private Spinner mAddCifraTwoTuningSpinner1;
-    private Spinner mAddCifraTwoTuningSpinner2;
-
-    private Spinner mAddCifraFourTuningSpinner1;
-    private Spinner mAddCifraFourTuningSpinner2;
-    private Spinner mAddCifraFourTuningSpinner3;
-    private Spinner mAddCifraFourTuningSpinner4;
+    private List<View> mContentLayoutList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_cifra_chords);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout parent = (LinearLayout) inflater.inflate(R.layout.activity_add_cifra_chords, null);
+
+        createCifraLayouts(inflater, parent);
+        setContentView(parent);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,70 +50,67 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     private void initComponents() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-        mAddCifraMainLayout = (LinearLayout) findViewById(R.id.addCifraMainLayout);
-        mAddCifraContentLayout = (LinearLayout) findViewById(R.id.addCifraContentLayout);
-
-        TextView addCifraLyricsTextView = (TextView) findViewById(R.id.addCifraLyricsTextView);
-        String cifraLyrics =  getIntent().getStringExtra("cifraLyrics");
-        String[] cifraLyricsInLines = cifraLyrics.split("\r\n|\r|\n");
-
-//        for (String line : cifraLyricsInLines) {
-//            //TODO Clone layout set text
-//            mAddCifraMainLayout.addView(mAddCifraContentLayout);
-//            addCifraLyricsTextView.setText(line);
-//        }
-
-        addCifraLyricsTextView.setText(cifraLyrics);
-
-        Spinner addCifraNumberOfChrods = (Spinner) findViewById(R.id.addCifraNumberOfChrods);
-
-        mAddCifraOneChordLayout = (LinearLayout) findViewById(R.id.addCifraOneChordLayout);
-        mAddCifraTwoChordLayout = (LinearLayout) findViewById(R.id.addCifraTwoChordLayout);
-        mAddCifraFourChordLayout = (LinearLayout) findViewById(R.id.addCifraFourChordLayout);
-
-        mAddCifraOneTuningSpinner = (Spinner) findViewById(R.id.addCifraOneChordSpinner);
-
-        mAddCifraTwoTuningSpinner1 = (Spinner) findViewById(R.id.addCifraTwoChordSpinner1);
-        mAddCifraTwoTuningSpinner2 = (Spinner) findViewById(R.id.addCifraTwoChordSpinner2);
-
-        mAddCifraFourTuningSpinner1 = (Spinner) findViewById(R.id.addCifraFourChordSpinner1);
-        mAddCifraFourTuningSpinner2 = (Spinner) findViewById(R.id.addCifraFourChordSpinner2);
-        mAddCifraFourTuningSpinner3 = (Spinner) findViewById(R.id.addCifraFourChordSpinner3);
-        mAddCifraFourTuningSpinner4 = (Spinner) findViewById(R.id.addCifraFourChordSpinner4);
-
+        Spinner addCifraNumberOfChords = (Spinner) findViewById(R.id.addCifraNumberOfChrods);
         CharSequence numberOfChords[] = getResources().getStringArray(R.array.numberOfChordsOptions);
-        addCifraNumberOfChrods.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numberOfChords));
-        addCifraNumberOfChrods.setOnItemSelectedListener(setNumberOfChordsItemSelect());
+        addCifraNumberOfChords.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numberOfChords));
+        addCifraNumberOfChords.setOnItemSelectedListener(setNumberOfChordsItemSelect());
+    }
 
-        setSpinnersAdapters();
+    private void initLyricsComponents(View custom) {
+        Spinner addCifraOneTuningSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
+
+        Spinner addCifraTwoTuningSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
+        Spinner addCifraTwoTuningSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
+
+        Spinner addCifraFourTuningSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
+        Spinner addCifraFourTuningSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
+        Spinner addCifraFourTuningSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
+        Spinner addCifraFourTuningSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+
+        createSpinnerAdapter(addCifraOneTuningSpinner);
+
+        createSpinnerAdapter(addCifraTwoTuningSpinner1);
+        createSpinnerAdapter(addCifraTwoTuningSpinner2);
+
+        createSpinnerAdapter(addCifraFourTuningSpinner1);
+        createSpinnerAdapter(addCifraFourTuningSpinner2);
+        createSpinnerAdapter(addCifraFourTuningSpinner3);
+        createSpinnerAdapter(addCifraFourTuningSpinner4);
     }
 
     private AdapterView.OnItemSelectedListener setNumberOfChordsItemSelect() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        mAddCifraOneChordLayout.setVisibility(View.VISIBLE);
-                        mAddCifraTwoChordLayout.setVisibility(View.GONE);
-                        mAddCifraFourChordLayout.setVisibility(View.GONE);
-                        break;
-                    case 1:
-                        mAddCifraOneChordLayout.setVisibility(View.GONE);
-                        mAddCifraTwoChordLayout.setVisibility(View.VISIBLE);
-                        mAddCifraFourChordLayout.setVisibility(View.GONE);
-                        break;
-                    case 2:
-                        mAddCifraOneChordLayout.setVisibility(View.GONE);
-                        mAddCifraTwoChordLayout.setVisibility(View.GONE);
-                        mAddCifraFourChordLayout.setVisibility(View.VISIBLE);
-                        break;
-                    case 3:
-                        mAddCifraOneChordLayout.setVisibility(View.GONE);
-                        mAddCifraTwoChordLayout.setVisibility(View.GONE);
-                        mAddCifraFourChordLayout.setVisibility(View.GONE);
-                        break;
+                if (mContentLayoutList != null) {
+                    for (View content : mContentLayoutList) {
+                        LinearLayout addCifraOneChordLayout = (LinearLayout) content.findViewById(R.id.addCifraOneChordLayout);
+                        LinearLayout addCifraTwoChordLayout = (LinearLayout) content.findViewById(R.id.addCifraTwoChordLayout);
+                        LinearLayout addCifraFourChordLayout = (LinearLayout) content.findViewById(R.id.addCifraFourChordLayout);
+
+                        switch (position) {
+                            case 0:
+                                addCifraOneChordLayout.setVisibility(View.VISIBLE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                            case 1:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.VISIBLE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                            case 2:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.VISIBLE);
+                                break;
+                            case 3:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                        }
+                    }
                 }
             }
 
@@ -128,20 +120,26 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         };
     }
 
-    private void setSpinnersAdapters() {
-        createSpinnerAdapter(mAddCifraOneTuningSpinner);
-
-        createSpinnerAdapter(mAddCifraTwoTuningSpinner1);
-        createSpinnerAdapter(mAddCifraTwoTuningSpinner2);
-
-        createSpinnerAdapter(mAddCifraFourTuningSpinner1);
-        createSpinnerAdapter(mAddCifraFourTuningSpinner2);
-        createSpinnerAdapter(mAddCifraFourTuningSpinner3);
-        createSpinnerAdapter(mAddCifraFourTuningSpinner4);
-    }
-
     private void createSpinnerAdapter(Spinner spinner) {
         CharSequence chords[] = getResources().getStringArray(R.array.chordsOptions);
         spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, chords));
+    }
+
+    private void createCifraLayouts(LayoutInflater inflater, LinearLayout parent) {
+        mContentLayoutList = new ArrayList<>();
+        LinearLayout addCifraComponentsLinearLayout = (LinearLayout) parent.findViewById(R.id.addCifraComponentsLinearLayout);
+
+        String[] cifraLyrics = getIntent().getStringArrayExtra("cifraLyrics");
+
+        for (String cifraLyricsInLine : cifraLyrics) {
+            View custom = inflater.inflate(R.layout.cifra_content, null);
+            TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
+            addCifraLyricsTextView.setText(cifraLyricsInLine);
+
+            initLyricsComponents(custom);
+            mContentLayoutList.add(custom);
+
+            addCifraComponentsLinearLayout.addView(custom);
+        }
     }
 }

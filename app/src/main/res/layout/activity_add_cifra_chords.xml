@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/addCifraMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,159 +7,42 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <Spinner
-        android:id="@+id/addCifraNumberOfChrods"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:drawSelectorOnTop="true" />
-
-    <LinearLayout
-        android:id="@+id/addCifraContentLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:theme="@style/ListEffect">
 
         <LinearLayout
-            android:id="@+id/addCifraOneChordLayout"
+            android:id="@+id/addCifraMainLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <Spinner
-                android:id="@+id/addCifraOneChordSpinner"
+                android:id="@+id/addCifraNumberOfChrods"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawSelectorOnTop="true" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/addCifraComponentsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/addCifraTwoChordLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="0dp"
+            <Button
+                android:id="@+id/addCifraSendButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraTwoChordSpinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraTwoChordSpinner2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:text="@string/add_cifra_send_button" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/addCifraFourChordLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraFourChordSpinner1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraFourChordSpinner2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraFourChordSpinner3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/addCifraFourChordSpinner4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:drawSelectorOnTop="true" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/addCifraLyricsTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textSize="16sp"
-            android:theme="@style/EditTextLineColor" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/addCifraSendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="@string/add_cifra_send_button" />
+    </ScrollView>
 
 </LinearLayout>

@@ -177,12 +177,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import marceloferracin.autocifra.R;
 
@@ -217,8 +221,24 @@ public class AddCifraWriteActivity extends AppCompatActivity {
         addCifraSendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<String> lines = new ArrayList<>();
+                Layout layout = addCifraEditText.getLayout();
+
+                if (layout != null) {
+                    final int lineCount = layout.getLineCount();
+                    final CharSequence text = layout.getText();
+
+                    for (int i = 0, startIndex = 0; i < lineCount; i++) {
+                        final int endIndex = layout.getLineEnd(i);
+                        lines.add(text.subSequence(startIndex, endIndex).toString());
+                        startIndex = endIndex;
+                    }
+                }
+
+                String[] array = lines.toArray(new String[lines.size()]);
+
                 Intent intent = new Intent(AddCifraWriteActivity.this, AddCifraChordsActivity.class);
-                intent.putExtra("cifraLyrics", addCifraEditText.getText().toString());
+                intent.putExtra("cifraLyrics", array);
                 startActivity(intent);
                 finish();
             }
