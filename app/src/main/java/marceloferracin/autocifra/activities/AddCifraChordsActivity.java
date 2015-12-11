@@ -134,17 +134,40 @@ public class AddCifraChordsActivity extends AppCompatActivity {
 
         for (String cifraLyricsInLine : cifraLyrics) {
             if (!cifraLyricsInLine.trim().equals("") && !cifraLyricsInLine.trim().equals("\n")) {
-                if (countWords(cifraLyricsInLine) < 5 && isCifra(cifraLyricsInLine)) {
-                    //TODO Verificar quantos acordes por linha
+                int wordsCount = countWords(cifraLyricsInLine);
+                View custom = inflater.inflate(R.layout.cifra_content, null);
+
+                if (wordsCount < 5 && isCifra(cifraLyricsInLine)) {
                     String[] splittedLine = cifraLyricsInLine.split("\\s[a-zA-Z]");
 
-                    for (String cifra : splittedLine) {
-                        if (Dictionaries.chordsDictionary().containsValue(cifra)) {
-                            //TODO Spinner seta valor
-                        }
+                    switch (wordsCount) {
+                        //TODO Não pode setar senão seta errado
+                        case 1:
+                            Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
+                            addCifraOneChordSpinner.setSelection((int) Dictionaries.chordsDictionary().get(cifraLyricsInLine.trim()));
+                            break;
+                        case 2:
+                            Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
+                            Spinner addCifraTwoChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
+
+                            addCifraTwoChordSpinner1.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[0]));
+                            addCifraTwoChordSpinner2.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[1]));
+                            break;
+                        case 3:
+                            Spinner addCifraFourChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
+                            Spinner addCifraFourChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
+                            Spinner addCifraFourChordSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
+                            Spinner addCifraFourChordSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+
+                            addCifraFourChordSpinner1.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[0]));
+                            addCifraFourChordSpinner2.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[1]));
+                            addCifraFourChordSpinner3.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[2]));
+                            addCifraFourChordSpinner4.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[3]));
+                            break;
+                        case 4:
+                            break;
                     }
                 } else {
-                    View custom = inflater.inflate(R.layout.cifra_content, null);
                     TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
                     addCifraLyricsTextView.setText(cifraLyricsInLine);
 
@@ -162,30 +185,12 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         String[] splittedLine = normalizedLine.split("\\s[a-zA-Z]");
 
         for (String cifra : splittedLine) {
-            if (!cifra.contains("A")
-                    || !cifra.contains("B")
-                    || !cifra.contains("C")
-                    || !cifra.contains("D")
-                    || !cifra.contains("E")
-                    || !cifra.contains("F")
-                    || !cifra.contains("G")
-                    || !cifra.contains("AM")
-                    || !cifra.contains("BM")
-                    || !cifra.contains("CM")
-                    || !cifra.contains("DM")
-                    || !cifra.contains("EM")
-                    || !cifra.contains("FM")
-                    || !cifra.contains("GM")
-                    || !cifra.contains("A#")
-                    || !cifra.contains("C#")
-                    || !cifra.contains("D#")
-                    || !cifra.contains("F#")
-                    || !cifra.contains("G#")) {
-                return false;
+            if (Dictionaries.chordsDictionary().containsKey(cifra)) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     private int countWords(String s){
