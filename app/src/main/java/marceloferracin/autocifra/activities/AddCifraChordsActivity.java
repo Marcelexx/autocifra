@@ -57,26 +57,8 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         addCifraNumberOfChords.setOnItemSelectedListener(setNumberOfChordsItemSelect());
     }
 
-    private void initLyricsComponents(View custom) {
-        Spinner addCifraOneTuningSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
-
-        Spinner addCifraTwoTuningSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
-        Spinner addCifraTwoTuningSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
-
-        Spinner addCifraFourTuningSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
-        Spinner addCifraFourTuningSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
-        Spinner addCifraFourTuningSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
-        Spinner addCifraFourTuningSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
-
-        createSpinnerAdapter(addCifraOneTuningSpinner);
-
-        createSpinnerAdapter(addCifraTwoTuningSpinner1);
-        createSpinnerAdapter(addCifraTwoTuningSpinner2);
-
-        createSpinnerAdapter(addCifraFourTuningSpinner1);
-        createSpinnerAdapter(addCifraFourTuningSpinner2);
-        createSpinnerAdapter(addCifraFourTuningSpinner3);
-        createSpinnerAdapter(addCifraFourTuningSpinner4);
+    private void initLyricsComponents(Spinner spinner) {
+        createSpinnerAdapter(spinner);
     }
 
     private AdapterView.OnItemSelectedListener setNumberOfChordsItemSelect() {
@@ -127,6 +109,17 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     }
 
     private void createCifraLayouts(LayoutInflater inflater, LinearLayout parent) {
+        int a = -1;
+        int b = -1;
+        int c = -1;
+        int d = -1;
+        int e = -1;
+        int f = -1;
+        int g = -1;
+        int h = -1;
+        int i = -1;
+        int j = -1;
+
         mContentLayoutList = new ArrayList<>();
         LinearLayout addCifraComponentsLinearLayout = (LinearLayout) parent.findViewById(R.id.addCifraComponentsLinearLayout);
 
@@ -141,37 +134,76 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                     String[] splittedLine = cifraLyricsInLine.split("\\s[a-zA-Z]");
 
                     switch (wordsCount) {
-                        //TODO Não pode setar senão seta errado
                         case 1:
-                            Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
-                            addCifraOneChordSpinner.setSelection((int) Dictionaries.chordsDictionary().get(cifraLyricsInLine.trim()));
+                            a = (int) Dictionaries.chordsDictionary().get(cifraLyricsInLine.trim());
                             break;
                         case 2:
-                            Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
-                            Spinner addCifraTwoChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
-
-                            addCifraTwoChordSpinner1.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[0]));
-                            addCifraTwoChordSpinner2.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[1]));
+                            b = (int) Dictionaries.chordsDictionary().get(splittedLine[0]);
+                            c = (int) Dictionaries.chordsDictionary().get(splittedLine[1]);
                             break;
                         case 3:
-                            Spinner addCifraFourChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
-                            Spinner addCifraFourChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
-                            Spinner addCifraFourChordSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
-                            Spinner addCifraFourChordSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
-
-                            addCifraFourChordSpinner1.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[0]));
-                            addCifraFourChordSpinner2.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[1]));
-                            addCifraFourChordSpinner3.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[2]));
-                            addCifraFourChordSpinner4.setSelection((int) Dictionaries.chordsDictionary().get(splittedLine[3]));
+                            d = (int) Dictionaries.chordsDictionary().get(splittedLine[0]);
+                            e = (int) Dictionaries.chordsDictionary().get(splittedLine[1]);
+                            f = (int) Dictionaries.chordsDictionary().get(splittedLine[2]);
                             break;
                         case 4:
+                            g = (int) Dictionaries.chordsDictionary().get(splittedLine[0]);
+                            h = (int) Dictionaries.chordsDictionary().get(splittedLine[1]);
+                            i = (int) Dictionaries.chordsDictionary().get(splittedLine[2]);
+                            j = (int) Dictionaries.chordsDictionary().get(splittedLine[3]);
                             break;
                     }
                 } else {
                     TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
                     addCifraLyricsTextView.setText(cifraLyricsInLine);
 
-                    initLyricsComponents(custom);
+                    switch (wordsCount) {
+                        case 1:
+                            Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
+                            createSpinnerAdapter(addCifraOneChordSpinner);
+                            addCifraOneChordSpinner.setSelection(a);
+                            break;
+                        case 2:
+                            Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
+                            Spinner addCifraTwoChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
+                            createSpinnerAdapter(addCifraTwoChordSpinner1);
+                            createSpinnerAdapter(addCifraTwoChordSpinner2);
+
+                            addCifraTwoChordSpinner1.setSelection(b);
+                            addCifraTwoChordSpinner2.setSelection(c);
+                            break;
+                        case 3:
+                            Spinner addCifraFourChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
+                            Spinner addCifraFourChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
+                            Spinner addCifraFourChordSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
+                            Spinner addCifraFourChordSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+                            createSpinnerAdapter(addCifraFourChordSpinner1);
+                            createSpinnerAdapter(addCifraFourChordSpinner2);
+                            createSpinnerAdapter(addCifraFourChordSpinner3);
+                            createSpinnerAdapter(addCifraFourChordSpinner4);
+
+                            addCifraFourChordSpinner1.setSelection(d);
+                            addCifraFourChordSpinner2.setSelection(e);
+                            addCifraFourChordSpinner3.setSelection(f);
+                            addCifraFourChordSpinner4.setSelection(g);
+                            break;
+                        case 4:
+                            Spinner addCifraFourSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
+                            Spinner addCifraFourSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
+                            Spinner addCifraFourSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
+                            Spinner addCifraFourSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+                            createSpinnerAdapter(addCifraFourSpinner1);
+                            createSpinnerAdapter(addCifraFourSpinner2);
+                            createSpinnerAdapter(addCifraFourSpinner3);
+                            createSpinnerAdapter(addCifraFourSpinner4);
+
+                            addCifraFourSpinner1.setSelection(g);
+                            addCifraFourSpinner2.setSelection(h);
+                            addCifraFourSpinner3.setSelection(i);
+                            addCifraFourSpinner4.setSelection(j);
+                            break;
+                    }
+
                     mContentLayoutList.add(custom);
 
                     addCifraComponentsLinearLayout.addView(custom);
