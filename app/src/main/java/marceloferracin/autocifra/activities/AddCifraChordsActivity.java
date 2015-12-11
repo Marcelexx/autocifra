@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.utils.Dictionaries;
 
 public class AddCifraChordsActivity extends AppCompatActivity {
     private List<View> mContentLayoutList;
@@ -134,7 +135,14 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         for (String cifraLyricsInLine : cifraLyrics) {
             if (!cifraLyricsInLine.trim().equals("") && !cifraLyricsInLine.trim().equals("\n")) {
                 if (countWords(cifraLyricsInLine) < 5 && isCifra(cifraLyricsInLine)) {
-                    //TODO Coletar cifras e setar no dropdown
+                    //TODO Verificar quantos acordes por linha
+                    String[] splittedLine = cifraLyricsInLine.split("\\s[a-zA-Z]");
+
+                    for (String cifra : splittedLine) {
+                        if (Dictionaries.chordsDictionary().containsValue(cifra)) {
+                            //TODO Spinner seta valor
+                        }
+                    }
                 } else {
                     View custom = inflater.inflate(R.layout.cifra_content, null);
                     TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
