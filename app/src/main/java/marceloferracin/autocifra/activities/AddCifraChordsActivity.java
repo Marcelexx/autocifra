@@ -132,14 +132,70 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         String[] cifraLyrics = getIntent().getStringArrayExtra("cifraLyrics");
 
         for (String cifraLyricsInLine : cifraLyrics) {
-            View custom = inflater.inflate(R.layout.cifra_content, null);
-            TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
-            addCifraLyricsTextView.setText(cifraLyricsInLine);
+            if (!cifraLyricsInLine.trim().equals("") && !cifraLyricsInLine.trim().equals("\n")) {
+                if (countWords(cifraLyricsInLine) < 5 && isCifra(cifraLyricsInLine)) {
+                    //TODO Coletar cifras e setar no dropdown
+                } else {
+                    View custom = inflater.inflate(R.layout.cifra_content, null);
+                    TextView addCifraLyricsTextView = (TextView) custom.findViewById(R.id.addCifraLyricsTextView);
+                    addCifraLyricsTextView.setText(cifraLyricsInLine);
 
-            initLyricsComponents(custom);
-            mContentLayoutList.add(custom);
+                    initLyricsComponents(custom);
+                    mContentLayoutList.add(custom);
 
-            addCifraComponentsLinearLayout.addView(custom);
+                    addCifraComponentsLinearLayout.addView(custom);
+                }
+            }
         }
+    }
+
+    private boolean isCifra(String line) {
+        String normalizedLine = line.toUpperCase();
+        String[] splittedLine = normalizedLine.split("\\s[a-zA-Z]");
+
+        for (String cifra : splittedLine) {
+            if (!cifra.contains("A")
+                    || !cifra.contains("B")
+                    || !cifra.contains("C")
+                    || !cifra.contains("D")
+                    || !cifra.contains("E")
+                    || !cifra.contains("F")
+                    || !cifra.contains("G")
+                    || !cifra.contains("AM")
+                    || !cifra.contains("BM")
+                    || !cifra.contains("CM")
+                    || !cifra.contains("DM")
+                    || !cifra.contains("EM")
+                    || !cifra.contains("FM")
+                    || !cifra.contains("GM")
+                    || !cifra.contains("A#")
+                    || !cifra.contains("C#")
+                    || !cifra.contains("D#")
+                    || !cifra.contains("F#")
+                    || !cifra.contains("G#")) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private int countWords(String s){
+        int wordCount = 0;
+        boolean word = false;
+        int endOfLine = s.length() - 1;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isLetter(s.charAt(i)) && i != endOfLine) {
+                word = true;
+            } else if (!Character.isLetter(s.charAt(i)) && word) {
+                wordCount++;
+                word = false;
+            } else if (Character.isLetter(s.charAt(i)) && i == endOfLine) {
+                wordCount++;
+            }
+        }
+
+        return wordCount;
     }
 }
