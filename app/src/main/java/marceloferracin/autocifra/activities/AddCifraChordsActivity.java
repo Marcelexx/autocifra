@@ -183,6 +183,7 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                 View custom = inflater.inflate(R.layout.cifra_content, null);
 
                 if (wordsCount < 5 && isCifra(cifraLyricsInLine)) {
+                    //TODO Melhorar regex para pegar acordes
                     String[] splitLine = cifraLyricsInLine.trim().split("\\s");
 
                     switch (wordsCount) {
@@ -220,13 +221,11 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                 }
             }
         }
-
     }
 
     private boolean isCifra(String line) {
         String normalizedLine = line.replaceAll("[\n]", "").toUpperCase().trim();
 
-        //TODO Melhorar regex para pegar acordes
         String[] splitLine = normalizedLine.split("\\s[a-zA-Z]");
 
         for (String cifra : splitLine) {
