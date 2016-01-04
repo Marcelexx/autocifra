@@ -19,13 +19,13 @@ public class Dictionaries {
         map.put("F", 5);
         map.put("G", 6);
 
-        map.put("Am", 7);
-        map.put("Bm", 8);
-        map.put("Cm", 9);
-        map.put("Dm", 10);
-        map.put("Em", 11);
-        map.put("Fm", 12);
-        map.put("Gm", 13);
+        map.put("AM", 7);
+        map.put("BM", 8);
+        map.put("CM", 9);
+        map.put("DM", 10);
+        map.put("EM", 11);
+        map.put("FM", 12);
+        map.put("GM", 13);
 
         map.put("A#", 14);
         map.put("B#", 15);

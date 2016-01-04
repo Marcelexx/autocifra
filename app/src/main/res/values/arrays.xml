@@ -62,5 +62,19 @@
         <item>E</item>
         <item>F</item>
         <item>G</item>
+        <item>Am</item>
+        <item>Bm</item>
+        <item>Cm</item>
+        <item>Dm</item>
+        <item>Em</item>
+        <item>Fm</item>
+        <item>Gm</item>
+        <item>A#</item>
+        <item>B#</item>
+        <item>C#</item>
+        <item>D#</item>
+        <item>E#</item>
+        <item>F#</item>
+        <item>G#</item>
     </array>
 </resources>
