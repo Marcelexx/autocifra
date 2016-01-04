@@ -48,7 +48,6 @@ public class AddCifraActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AddCifraActivity.this, AddCifraWriteActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

@@ -180,6 +180,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -211,6 +212,15 @@ public class AddCifraWriteActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initComponents() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -240,7 +250,6 @@ public class AddCifraWriteActivity extends AppCompatActivity {
                 Intent intent = new Intent(AddCifraWriteActivity.this, AddCifraChordsActivity.class);
                 intent.putExtra("cifraLyrics", array);
                 startActivity(intent);
-                finish();
             }
         });
     }

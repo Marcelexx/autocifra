@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -51,6 +52,15 @@ public class AddCifraChordsActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initComponents() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -65,7 +75,6 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     }
 
     private void initLyricsComponents(View custom, boolean hasCifra, int cifraCount, Map<String, Integer> chordSelectionMap) {
-        //TODO Alterar spinner para mudar acordes em todos os tempos
         final Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
 
         final Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
@@ -204,48 +213,6 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     }
 
     private AdapterView.OnItemSelectedListener setNumberOfChordsItemSelect() {
-        return new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (mContentLayoutList != null) {
-                    for (View content : mContentLayoutList) {
-                        LinearLayout addCifraOneChordLayout = (LinearLayout) content.findViewById(R.id.addCifraOneChordLayout);
-                        LinearLayout addCifraTwoChordLayout = (LinearLayout) content.findViewById(R.id.addCifraTwoChordLayout);
-                        LinearLayout addCifraFourChordLayout = (LinearLayout) content.findViewById(R.id.addCifraFourChordLayout);
-
-                        switch (position) {
-                            case 0:
-                                addCifraOneChordLayout.setVisibility(View.VISIBLE);
-                                addCifraTwoChordLayout.setVisibility(View.GONE);
-                                addCifraFourChordLayout.setVisibility(View.GONE);
-                                break;
-                            case 1:
-                                addCifraOneChordLayout.setVisibility(View.GONE);
-                                addCifraTwoChordLayout.setVisibility(View.VISIBLE);
-                                addCifraFourChordLayout.setVisibility(View.GONE);
-                                break;
-                            case 2:
-                                addCifraOneChordLayout.setVisibility(View.GONE);
-                                addCifraTwoChordLayout.setVisibility(View.GONE);
-                                addCifraFourChordLayout.setVisibility(View.VISIBLE);
-                                break;
-                            case 3:
-                                addCifraOneChordLayout.setVisibility(View.GONE);
-                                addCifraTwoChordLayout.setVisibility(View.GONE);
-                                addCifraFourChordLayout.setVisibility(View.GONE);
-                                break;
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        };
-    }
-
-    private AdapterView.OnItemSelectedListener setChordsInSpinners() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
