@@ -10,12 +10,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.utils.Resources;
 
 public class AddCifraActivity extends AppCompatActivity {
+    private EditText mAddCifraMusicEditText;
+    private EditText mAddCifraArtistEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +46,23 @@ public class AddCifraActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        mAddCifraMusicEditText = (EditText) findViewById(R.id.addCifraMusicEditText);
+        mAddCifraArtistEditText = (EditText) findViewById(R.id.addCifraArtistEditText);
         Button addCifraContinueButton = (Button) findViewById(R.id.addCifraContinueButton);
         Spinner addCifraTuningSpinner = (Spinner) findViewById(R.id.addCifraTuningSpinner);
 
         addCifraContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddCifraActivity.this, AddCifraWriteActivity.class);
-                startActivity(intent);
+                int validationId = validateFields();
+
+                if (validationId == -1) {
+                    Intent intent = new Intent(AddCifraActivity.this, AddCifraWriteActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(AddCifraActivity.this, Resources.getStringById(AddCifraActivity.this,
+                            validationId), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -65,5 +80,14 @@ public class AddCifraActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private int validateFields() {
+        if (mAddCifraMusicEditText.getText().toString().length() == 0
+                || mAddCifraArtistEditText.getText().length() == 0) {
+            return R.string.add_cifra_empty_fields;
+        }
+
+        return -1;
     }
 }

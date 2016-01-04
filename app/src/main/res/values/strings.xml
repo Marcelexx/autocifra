@@ -63,6 +63,7 @@
     <string name="sign_up_email_invalid">O formato do e-mail está incorreto</string>
     <string name="sign_up_password_invalid">A senha deve ter no mínimo 6 caracteres</string>
     <string name="sign_up_confirm_password_invalid">A senha e a confirmação de senha estão diferentes</string>
+    <string name="add_cifra_empty_fields">Preencha todos os campos</string>
 
 
     <!-- TESTE SOBRE-->
