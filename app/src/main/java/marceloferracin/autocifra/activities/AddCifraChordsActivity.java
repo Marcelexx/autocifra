@@ -66,15 +66,74 @@ public class AddCifraChordsActivity extends AppCompatActivity {
 
     private void initLyricsComponents(View custom, boolean hasCifra, int cifraCount, Map<String, Integer> chordSelectionMap) {
         //TODO Alterar spinner para mudar acordes em todos os tempos
-        Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
+        final Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
 
-        Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
-        Spinner addCifraTwoChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
+        final Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
+        final Spinner addCifraTwoChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner2);
 
-        Spinner addCifraFourChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
-        Spinner addCifraFourChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
-        Spinner addCifraFourChordSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
-        Spinner addCifraFourChordSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+        final Spinner addCifraFourChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner1);
+        final Spinner addCifraFourChordSpinner2 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner2);
+        final Spinner addCifraFourChordSpinner3 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner3);
+        final Spinner addCifraFourChordSpinner4 = (Spinner) custom.findViewById(R.id.addCifraFourChordSpinner4);
+
+        //One Chord
+        addCifraOneChordSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addCifraTwoChordSpinner1.setSelection(position);
+                addCifraFourChordSpinner1.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        //Two Chords
+        addCifraTwoChordSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addCifraOneChordSpinner.setSelection(position);
+                addCifraFourChordSpinner1.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        addCifraTwoChordSpinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addCifraFourChordSpinner3.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        //Four Chords
+        addCifraFourChordSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addCifraOneChordSpinner.setSelection(position);
+                addCifraTwoChordSpinner1.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        addCifraFourChordSpinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                addCifraTwoChordSpinner2.setSelection(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         createSpinnerAdapter(addCifraOneChordSpinner);
 
@@ -145,6 +204,48 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     }
 
     private AdapterView.OnItemSelectedListener setNumberOfChordsItemSelect() {
+        return new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (mContentLayoutList != null) {
+                    for (View content : mContentLayoutList) {
+                        LinearLayout addCifraOneChordLayout = (LinearLayout) content.findViewById(R.id.addCifraOneChordLayout);
+                        LinearLayout addCifraTwoChordLayout = (LinearLayout) content.findViewById(R.id.addCifraTwoChordLayout);
+                        LinearLayout addCifraFourChordLayout = (LinearLayout) content.findViewById(R.id.addCifraFourChordLayout);
+
+                        switch (position) {
+                            case 0:
+                                addCifraOneChordLayout.setVisibility(View.VISIBLE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                            case 1:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.VISIBLE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                            case 2:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.VISIBLE);
+                                break;
+                            case 3:
+                                addCifraOneChordLayout.setVisibility(View.GONE);
+                                addCifraTwoChordLayout.setVisibility(View.GONE);
+                                addCifraFourChordLayout.setVisibility(View.GONE);
+                                break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+    }
+
+    private AdapterView.OnItemSelectedListener setChordsInSpinners() {
         return new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
