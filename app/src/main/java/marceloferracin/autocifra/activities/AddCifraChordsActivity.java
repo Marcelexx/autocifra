@@ -54,17 +54,18 @@ public class AddCifraChordsActivity extends AppCompatActivity {
     private void initComponents() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        Spinner addCifraNumberOfChords = (Spinner) findViewById(R.id.addCifraNumberOfChrods);
+        Spinner addCifraNumberOfChordsSpinner = (Spinner) findViewById(R.id.addCifraNumberOfChordsSpinner);
         CharSequence numberOfChords[] = getResources().getStringArray(R.array.numberOfChordsOptions);
-        addCifraNumberOfChords.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numberOfChords));
-        addCifraNumberOfChords.setOnItemSelectedListener(setNumberOfChordsItemSelect());
+        addCifraNumberOfChordsSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, numberOfChords));
+        addCifraNumberOfChordsSpinner.setOnItemSelectedListener(setNumberOfChordsItemSelect());
 
         if (mChordSelectionNumber != 0) {
-            addCifraNumberOfChords.setSelection(mChordSelectionNumber);
+            addCifraNumberOfChordsSpinner.setSelection(mChordSelectionNumber);
         }
     }
 
     private void initLyricsComponents(View custom, boolean hasCifra, int cifraCount, Map<String, Integer> chordSelectionMap) {
+        //TODO Alterar spinner para mudar acordes em todos os tempos
         Spinner addCifraOneChordSpinner = (Spinner) custom.findViewById(R.id.addCifraOneChordSpinner);
 
         Spinner addCifraTwoChordSpinner1 = (Spinner) custom.findViewById(R.id.addCifraTwoChordSpinner1);
@@ -89,20 +90,32 @@ public class AddCifraChordsActivity extends AppCompatActivity {
             switch (cifraCount) {
                 case 1:
                     addCifraOneChordSpinner.setSelection(chordSelectionMap.get("a"));
+                    addCifraTwoChordSpinner1.setSelection(chordSelectionMap.get("a"));
+                    addCifraFourChordSpinner1.setSelection(chordSelectionMap.get("a"));
 
                     if (mChordSelectionNumber == 0) {
                         mChordSelectionNumber = 0;
                     }
                     break;
                 case 2:
+                    addCifraOneChordSpinner.setSelection(chordSelectionMap.get("b"));
+
                     addCifraTwoChordSpinner1.setSelection(chordSelectionMap.get("b"));
                     addCifraTwoChordSpinner2.setSelection(chordSelectionMap.get("c"));
+
+                    addCifraFourChordSpinner1.setSelection(chordSelectionMap.get("b"));
+                    addCifraFourChordSpinner3.setSelection(chordSelectionMap.get("c"));
 
                     if (mChordSelectionNumber == 0) {
                         mChordSelectionNumber = 1;
                     }
                     break;
                 case 3:
+                    addCifraOneChordSpinner.setSelection(chordSelectionMap.get("d"));
+
+                    addCifraTwoChordSpinner1.setSelection(chordSelectionMap.get("d"));
+                    addCifraTwoChordSpinner2.setSelection(chordSelectionMap.get("f"));
+
                     addCifraFourChordSpinner1.setSelection(chordSelectionMap.get("d"));
                     addCifraFourChordSpinner2.setSelection(chordSelectionMap.get("e"));
                     addCifraFourChordSpinner3.setSelection(chordSelectionMap.get("f"));
@@ -113,6 +126,11 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                     }
                     break;
                 case 4:
+                    addCifraOneChordSpinner.setSelection(chordSelectionMap.get("g"));
+
+                    addCifraTwoChordSpinner1.setSelection(chordSelectionMap.get("g"));
+                    addCifraTwoChordSpinner2.setSelection(chordSelectionMap.get("i"));
+
                     addCifraFourChordSpinner1.setSelection(chordSelectionMap.get("g"));
                     addCifraFourChordSpinner2.setSelection(chordSelectionMap.get("h"));
                     addCifraFourChordSpinner3.setSelection(chordSelectionMap.get("i"));
@@ -200,28 +218,27 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                 View custom = inflater.inflate(R.layout.cifra_content, null);
 
                 if (wordsCount < 5 && isCifra(cifraLyricsInLine)) {
-                    //TODO Melhorar regex para pegar acordes
                     String normalizedLine = cifraLyricsInLine.replaceAll("[\n]", "").replaceAll("\\s+", " ").toUpperCase().trim();
                     String[] splitLine = normalizedLine.split("\\s");
 
                     switch (wordsCount) {
                         case 1:
-                            chordSelectionMap.put("a", (int) Dictionaries.chordsDictionary().get(splitLine[0].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("a", (int) Dictionaries.chordsDictionary().get(splitLine[0].toUpperCase().trim()) + 1);
                             break;
                         case 2:
-                            chordSelectionMap.put("b", (int) Dictionaries.chordsDictionary().get(splitLine[0].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("c", (int) Dictionaries.chordsDictionary().get(splitLine[1].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("b", (int) Dictionaries.chordsDictionary().get(splitLine[0].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("c", (int) Dictionaries.chordsDictionary().get(splitLine[1].toUpperCase().trim()) + 1);
                             break;
                         case 3:
-                            chordSelectionMap.put("d", (int) Dictionaries.chordsDictionary().get(splitLine[0].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("e", (int) Dictionaries.chordsDictionary().get(splitLine[1].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("f", (int) Dictionaries.chordsDictionary().get(splitLine[2].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("d", (int) Dictionaries.chordsDictionary().get(splitLine[0].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("e", (int) Dictionaries.chordsDictionary().get(splitLine[1].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("f", (int) Dictionaries.chordsDictionary().get(splitLine[2].toUpperCase().trim()) + 1);
                             break;
                         case 4:
-                            chordSelectionMap.put("g", (int) Dictionaries.chordsDictionary().get(splitLine[0].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("h", (int) Dictionaries.chordsDictionary().get(splitLine[1].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("i", (int) Dictionaries.chordsDictionary().get(splitLine[2].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
-                            chordSelectionMap.put("j", (int) Dictionaries.chordsDictionary().get(splitLine[3].replaceAll("[\n]", "").toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("g", (int) Dictionaries.chordsDictionary().get(splitLine[0].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("h", (int) Dictionaries.chordsDictionary().get(splitLine[1].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("i", (int) Dictionaries.chordsDictionary().get(splitLine[2].toUpperCase().trim()) + 1);
+                            chordSelectionMap.put("j", (int) Dictionaries.chordsDictionary().get(splitLine[3].toUpperCase().trim()) + 1);
                             break;
                     }
 
@@ -243,16 +260,20 @@ public class AddCifraChordsActivity extends AppCompatActivity {
 
     private boolean isCifra(String line) {
         String normalizedLine = line.replaceAll("[\n]", "").replaceAll("\\s+", " ").toUpperCase().trim();
-
         String[] splitLine = normalizedLine.split("\\s");
+
+        boolean isCifra = false;
 
         for (String cifra : splitLine) {
             if (Dictionaries.chordsDictionary().containsKey(cifra)) {
-                return true;
+                isCifra = true;
+            } else {
+                isCifra = false;
+                break;
             }
         }
 
-        return false;
+        return isCifra;
     }
 
     private int countWords(String s) {
