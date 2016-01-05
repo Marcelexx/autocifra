@@ -36,7 +36,7 @@ public class AboutFragment extends Fragment {
         toolbarTitle.setText(getString(R.string.about_title));
 
         TextView aboutVersionTextView = (TextView) v.findViewById(R.id.aboutVersionTextView);
-        String versionText = getString(R.string.version_name) + " " + BuildConfig.VERSION_NAME;
+        String versionText = getString(R.string.version_name) + BuildConfig.VERSION_NAME;
         aboutVersionTextView.setText(versionText);
     }
 

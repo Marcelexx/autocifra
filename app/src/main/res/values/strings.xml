@@ -2,7 +2,7 @@
     <string name="app_name">AutoCifra</string>
 
     <!-- General Strings-->
-    <string name="version_name">Versão</string>
+    <string name="version_name">Versão\u0020</string>
     <string name="string_not_found">Não foi encontrado</string>
 
     <!-- Screen Titles-->
@@ -71,10 +71,10 @@
     <string name="sign_up_confirm_password_invalid">A senha e a confirmação de senha estão diferentes</string>
     <string name="add_cifra_empty_fields">Preencha todos os campos</string>
 
-
-    <!-- TESTE SOBRE-->
-    <string name="about_text">Podemos já vislumbrar o modo pelo qual o comprometimento entre as equipes representa uma abertura para a melhoria das condições inegavelmente apropriadas.
-        O cuidado em identificar pontos críticos no fenômeno da Internet possibilita uma melhor visão global dos índices pretendidos.</string>
+    <!-- About Text-->
+    <string name="about_text">O aplicativo AutoCifra tem como objetivo facilitar a vida daqueles que
+        gostam de reproduzir suas músicas favoritas ou até mesmo aprender uma nova composição, melodia ou instrumento.
+        \nCriado exclusivamente para adoradores da música, sendo um instrumentista ou não.\n\nNunca é tarde para ser um grande músico.</string>
 
 
     <!--REMOVER-->
