@@ -39,7 +39,7 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent">
 
-                <ImageView
+                <marceloferracin.autocifra.layout.RoundedImageView
                     android:id="@+id/profilePhotoImageView"
                     android:layout_width="66dp"
                     android:layout_height="66dp"

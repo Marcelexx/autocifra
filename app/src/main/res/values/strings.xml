@@ -56,6 +56,11 @@
 
     <!-- Profile Strings-->
     <string name="profile_login_message">Login ou Criar Conta</string>
+    <string name="profile_take_picture">Tirar foto</string>
+    <string name="profile_choose_picture">Galeria</string>
+    <string name="profile_picture_back">Voltar</string>
+    <string name="profile_add_picture">Adicionar Foto</string>
+    <string name="profile_picture_choose_file">Escolher arquivo</string>
 
     <!-- Validation Strings-->
     <string name="login_email_invalid">O formato do e-mail está incorreto</string>

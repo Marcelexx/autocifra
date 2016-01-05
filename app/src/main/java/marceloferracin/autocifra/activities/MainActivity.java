@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,14 +26,18 @@ import marceloferracin.autocifra.fragments.CifrasFragment;
 import marceloferracin.autocifra.fragments.PlaylistsFragment;
 import marceloferracin.autocifra.fragments.RankingFragment;
 import marceloferracin.autocifra.fragments.TalentFragment;
+import marceloferracin.autocifra.layout.RoundedImageView;
+import marceloferracin.autocifra.utils.ImageSelector;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private Toolbar mToolbar;
     private SharedPreferencesControl mSharedPreferencesControl;
+    private RoundedImageView mProfilePhoto;
     private ImageButton mProfileOptionsButton;
 
-    public static MainActivity mMainActivity;
+    private ImageSelector mImageSelector;
+    private static MainActivity mMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,23 +64,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateProfileInfo() {
-        ImageView profilePhotoImageView = (ImageView) findViewById(R.id.profilePhotoImageView);
         TextView profileNameTextView = (TextView) findViewById(R.id.profileNameTextView);
         TextView profileLevelTextView = (TextView) findViewById(R.id.profileLevelTextView);
         mProfileOptionsButton = (ImageButton) findViewById(R.id.profileOptionsButton);
+        mProfilePhoto = (RoundedImageView) findViewById(R.id.profilePhotoImageView);
 
         if (mSharedPreferencesControl.getIsLogged()) {
-            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
+            mProfilePhoto.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
             //TODO Trocar por nome
             profileNameTextView.setText("Marcelo Ferracin");
             profileLevelTextView.setText("Nível 1");
             profileLevelTextView.setVisibility(View.VISIBLE);
             mProfileOptionsButton.setVisibility(View.VISIBLE);
         } else {
-            profilePhotoImageView.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
+            mProfilePhoto.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
             profileNameTextView.setText(getString(R.string.profile_login_message));
             profileLevelTextView.setVisibility(View.GONE);
             mProfileOptionsButton.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            mImageSelector.setSignUpProfileImage(resultCode, data);
         }
     }
 
@@ -110,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
         updateProfileInfo();
 
         profileLayout.setOnClickListener(setProfileLayoutClick());
+
+        mProfilePhoto.setOnClickListener(setProfilePhotoClick());
         mProfileOptionsButton.setOnClickListener(setProfileOptionsClick());
     }
 
@@ -174,6 +187,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mSharedPreferencesControl.setIsLogged(false);
                 updateProfileInfo();
+            }
+        };
+    }
+
+    private View.OnClickListener setProfilePhotoClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mSharedPreferencesControl.getIsLogged()) {
+                    mImageSelector = new ImageSelector(mMainActivity, mProfilePhoto);
+                    mImageSelector.selectImage();
+                }
             }
         };
     }
