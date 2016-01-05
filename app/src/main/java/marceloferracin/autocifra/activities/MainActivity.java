@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferencesControl mSharedPreferencesControl;
     private RoundedImageView mProfilePhoto;
     private ImageButton mProfileOptionsButton;
+    private LinearLayout mProfileLinkLayout;
 
     private ImageSelector mImageSelector;
     private static MainActivity mMainActivity;
@@ -66,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
     public void updateProfileInfo() {
         TextView profileNameTextView = (TextView) findViewById(R.id.profileNameTextView);
         TextView profileLevelTextView = (TextView) findViewById(R.id.profileLevelTextView);
-        mProfileOptionsButton = (ImageButton) findViewById(R.id.profileOptionsButton);
-        mProfilePhoto = (RoundedImageView) findViewById(R.id.profilePhotoImageView);
 
         if (mSharedPreferencesControl.getIsLogged()) {
+            mProfileLinkLayout.setClickable(true);
+            mProfilePhoto.setClickable(true);
             mProfilePhoto.setBackground(getResources().getDrawable(R.mipmap.ic_account_circle_white_48dp));
             //TODO Trocar por nome
             profileNameTextView.setText("Marcelo Ferracin");
@@ -77,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
             profileLevelTextView.setVisibility(View.VISIBLE);
             mProfileOptionsButton.setVisibility(View.VISIBLE);
         } else {
+            mProfileLinkLayout.setClickable(false);
+            mProfilePhoto.setClickable(false);
             mProfilePhoto.setBackground(getResources().getDrawable(R.mipmap.ic_add_circle_white_48dp));
             profileNameTextView.setText(getString(R.string.profile_login_message));
             profileLevelTextView.setVisibility(View.GONE);
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
-            mImageSelector.setSignUpProfileImage(resultCode, data);
+            mImageSelector.setProfileImage(resultCode, data);
         }
     }
 
@@ -97,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         String[] cifraOptions = getResources().getStringArray(R.array.autoCifraOptionsArray);
         ListView drawerList = (ListView) findViewById(R.id.cifraOptionsDrawerList);
         RelativeLayout profileLayout = (RelativeLayout) findViewById(R.id.profileLayout);
+        mProfileLinkLayout = (LinearLayout) findViewById(R.id.profileLinkLayout);
+        mProfileOptionsButton = (ImageButton) findViewById(R.id.profileOptionsButton);
+        mProfilePhoto = (RoundedImageView) findViewById(R.id.profilePhotoImageView);
 
         drawerList.setAdapter(new ArrayAdapter<>(this,
                 R.layout.cifra_options_item, cifraOptions));
@@ -118,12 +125,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerToggle.syncState();
 
-        updateProfileInfo();
-
         profileLayout.setOnClickListener(setProfileLayoutClick());
+        mProfileLinkLayout.setOnClickListener(setProfileLinkLayoutClick());
 
         mProfilePhoto.setOnClickListener(setProfilePhotoClick());
         mProfileOptionsButton.setOnClickListener(setProfileOptionsClick());
+
+        updateProfileInfo();
     }
 
     private void changeFragment(int position) {
@@ -174,8 +182,19 @@ public class MainActivity extends AppCompatActivity {
                     mDrawer.closeDrawers();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
-                } else {
-                    //TODO Perfil de usuário
+                }
+            }
+        };
+    }
+
+    private View.OnClickListener setProfileLinkLayoutClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mSharedPreferencesControl.getIsLogged()) {
+                    mDrawer.closeDrawers();
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    startActivity(intent);
                 }
             }
         };

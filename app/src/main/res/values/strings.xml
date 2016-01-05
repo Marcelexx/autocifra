@@ -14,6 +14,7 @@
     <string name="add_cifra_title">Adicionar Cifra</string>
     <string name="login_title">Login</string>
     <string name="sign_up_title">Cadastrar</string>
+    <string name="profile_title">Perfil</string>
 
     <!-- Drawer Strings-->
     <string name="navigation_drawer_open">Abrir Menu</string>

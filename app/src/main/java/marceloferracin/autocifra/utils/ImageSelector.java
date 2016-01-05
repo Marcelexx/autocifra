@@ -68,7 +68,7 @@ public class ImageSelector {
         imageSelectorDialog.show();
     }
 
-    public String setSignUpProfileImage(int resultCode, Intent data) {
+    public String setProfileImage(int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (mSelectedSource.equals("camera")) {
                 File f = new File(Environment.getExternalStorageDirectory().toString());

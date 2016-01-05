@@ -65,10 +65,12 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/profileLinkLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/profileInfoLayout"
                 android:layout_toRightOf="@+id/profileInfoLayout"
+                android:clickable="true"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
