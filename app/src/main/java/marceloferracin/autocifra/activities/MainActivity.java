@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mProfilePhoto = (RoundedImageView) findViewById(R.id.profilePhotoImageView);
 
         drawerList.setAdapter(new ArrayAdapter<>(this,
-                R.layout.cifra_options_item, cifraOptions));
+                R.layout.add_cifra_options_item, cifraOptions));
 
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

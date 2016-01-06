@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import marceloferracin.autocifra.R;
+import marceloferracin.autocifra.utils.CifraUtils;
 import marceloferracin.autocifra.utils.Dictionaries;
 
 public class AddCifraChordsActivity extends AppCompatActivity {
@@ -280,12 +281,14 @@ public class AddCifraChordsActivity extends AppCompatActivity {
 
         String[] cifraLyrics = getIntent().getStringArrayExtra("cifraLyrics");
 
+        CifraUtils cifraUtils = new CifraUtils();
+
         for (String cifraLyricsInLine : cifraLyrics) {
             if (!cifraLyricsInLine.trim().equals("") && !cifraLyricsInLine.trim().equals("\n")) {
-                int wordsCount = countWords(cifraLyricsInLine);
-                View custom = inflater.inflate(R.layout.cifra_content, null);
+                int wordsCount = cifraUtils.countWords(cifraLyricsInLine);
+                View custom = inflater.inflate(R.layout.add_cifra_content, null);
 
-                if (wordsCount < 5 && isCifra(cifraLyricsInLine)) {
+                if (wordsCount < 5 && cifraUtils.isCifra(cifraLyricsInLine)) {
                     String normalizedLine = cifraLyricsInLine.replaceAll("[\n]", "").replaceAll("\\s+", " ").toUpperCase().trim();
                     String[] splitLine = normalizedLine.split("\\s");
 
@@ -324,42 +327,5 @@ public class AddCifraChordsActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    private boolean isCifra(String line) {
-        String normalizedLine = line.replaceAll("[\n]", "").replaceAll("\\s+", " ").toUpperCase().trim();
-        String[] splitLine = normalizedLine.split("\\s");
-
-        boolean isCifra = false;
-
-        for (String cifra : splitLine) {
-            if (Dictionaries.chordsDictionary().containsKey(cifra)) {
-                isCifra = true;
-            } else {
-                isCifra = false;
-                break;
-            }
-        }
-
-        return isCifra;
-    }
-
-    private int countWords(String s) {
-        int wordCount = 0;
-        boolean word = false;
-        int endOfLine = s.length() - 1;
-
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isLetter(s.charAt(i)) && i != endOfLine) {
-                word = true;
-            } else if (!Character.isLetter(s.charAt(i)) && word) {
-                wordCount++;
-                word = false;
-            } else if (Character.isLetter(s.charAt(i)) && i == endOfLine) {
-                wordCount++;
-            }
-        }
-
-        return wordCount;
     }
 }

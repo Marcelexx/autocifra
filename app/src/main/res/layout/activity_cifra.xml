@@ -8,14 +8,16 @@
         layout="@layout/toolbar" />
 
     <ScrollView
+        android:id="@+id/cifraContentScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/ListEffect">
 
-        <TextView
-            android:id="@+id/cifraContentTextView"
+        <LinearLayout
+            android:id="@+id/cifraContentLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
 
     </ScrollView>
 
