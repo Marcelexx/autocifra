@@ -42,6 +42,9 @@
         <activity
             android:name=".activities.ProfileActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.PlaylistActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

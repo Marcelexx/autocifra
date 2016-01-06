@@ -1,5 +1,6 @@
 package marceloferracin.autocifra.fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ import java.util.List;
 
 import marceloferracin.autocifra.R;
 import marceloferracin.autocifra.activities.MainActivity;
+import marceloferracin.autocifra.activities.PlaylistActivity;
 import marceloferracin.autocifra.adapters.playlists.PlaylistListAdapter;
 import marceloferracin.autocifra.models.PlaylistItem;
 
@@ -59,6 +62,7 @@ public class PlaylistsFragment extends Fragment {
 
         final PlaylistListAdapter adapter = new PlaylistListAdapter(getActivity(), R.layout.cifras_top_playlist_item, playlistItemList);
         topMusicCypherListView.setAdapter(adapter);
+        topMusicCypherListView.setOnItemClickListener(playlistItemClick(adapter));
     }
 
     private List<PlaylistItem> setPartialPlaylists() {
@@ -123,6 +127,17 @@ public class PlaylistsFragment extends Fragment {
         });
 
         return playlistItemList;
+    }
+
+    private AdapterView.OnItemClickListener playlistItemClick(final PlaylistListAdapter adapter) {
+        return new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), PlaylistActivity.class);
+                intent.putExtra("cifra", adapter.getItem(position));
+                startActivity(intent);
+            }
+        };
     }
 
     @Override
