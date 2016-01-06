@@ -27,6 +27,11 @@
         <item>Destaques da Semana</item>
     </array>
 
+    <array name="profileOptions">
+        <item>Vídeos</item>
+        <item>Contribuições</item>
+    </array>
+
     <array name="tuningOptions">
         <item>Nenhum</item>
         <item>A</item>
