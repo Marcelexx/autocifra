@@ -26,6 +26,13 @@ public class CifraActivity extends AppCompatActivity {
         LinearLayout parent = (LinearLayout) inflater.inflate(R.layout.activity_cifra, null);
 
         CifraItem cifra = (CifraItem) getIntent().getSerializableExtra("cifra");
+
+
+        //TODO Remover
+        cifra.setMusic(getString(R.string.test_cifra));
+
+
+
         createComponentsLayout(inflater, parent, cifra);
 
         setContentView(parent);
@@ -60,9 +67,6 @@ public class CifraActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        TextView cifraContentTextView = (TextView) findViewById(R.id.cifraContentTextView);
-        cifraContentTextView.setText(getString(R.string.test_cifra));
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
@@ -74,7 +78,7 @@ public class CifraActivity extends AppCompatActivity {
         String[] splitCifra = cifra.getMusic().split("[\n]");
 
         for (String line : splitCifra) {
-            View custom = inflater.inflate(R.layout.cifra_content1, null);
+            View custom = inflater.inflate(R.layout.cifra_content, null);
 
             if (line.startsWith("--ch")) {
                 int wordsCount = cifraUtils.countWords(line);
@@ -93,6 +97,7 @@ public class CifraActivity extends AppCompatActivity {
     }
 
     private void setLineText(View layout, String text, int columnsQuantity) {
+        //TODO Trocar nomes de components
         LinearLayout addCifraOneChordLayout = (LinearLayout) layout.findViewById(R.id.addCifraOneChordLayout);
         LinearLayout addCifraTwoChordLayout = (LinearLayout) layout.findViewById(R.id.addCifraTwoChordLayout);
         LinearLayout addCifraFourChordLayout = (LinearLayout) layout.findViewById(R.id.addCifraFourChordLayout);
